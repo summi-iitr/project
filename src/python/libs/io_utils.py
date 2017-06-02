@@ -14,4 +14,4 @@ def read_input():
   return line
 
 def output_data(obj):
-  return json.dumps(obj)
+   print json.dumps(obj)
