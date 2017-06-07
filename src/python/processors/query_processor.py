@@ -8,11 +8,12 @@ from consts import intent
 def process(ques):
     words = word_tokenize(ques)
     tagged = pos_tag(words)
-    #namedent = ne_chunk(tagged)   #does the NER 
-    #return namedent.pos()
-    return tagged
+    namedent = ne_chunk(tagged)   #does the NER 
+    return namedent.pos()
+    
+
 
 question = read_input()
 pos_tags = process(question)
 output_data(pos_tags)
-output_data(intent[pos_tags[0][1]][pos_tags[0][0]])
+
