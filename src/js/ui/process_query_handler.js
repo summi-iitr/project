@@ -9,7 +9,7 @@ module.exports= () => {
   let q_text = $('#demo_q_text').val()
   $.ajax({
     type: 'get',
-    url: "http://127.0.0.1:8081/query",
+    url: "query",
     data:`text=${q_text}`,
     success: setQueryResult
   });
