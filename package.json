@@ -27,9 +27,8 @@
     "express":"",
     "body-parser":"",
     "cookie-parser":"",
-    "multer":""
-  },
-  "devDependencies": {
+    "multer":"",
+    "solr":"",
     "babel-preset-es2015": "",
     "babelify": "",
     "grunt": "^1.0.1",
@@ -47,6 +46,9 @@
     "grunt-exec": "",
     "grunt-sass": "",
     "load-grunt-tasks": ""
+  },
+  "devDependencies": {
+
   },
   "build": {
     "appId": "id",
