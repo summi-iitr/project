@@ -1,7 +1,7 @@
 import xml.etree.ElementTree as ET
 
-path='frm_getstarted_gs.xml'
-path2='frm_generating_output.xml'
+path='src/python/processors/frm_getstarted_gs.xml'
+path2='src/python/processors/frm_generating_output.xml'
 
 #parsing first xml
 tree=ET.parse(path)
