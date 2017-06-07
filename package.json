@@ -23,7 +23,11 @@
     "child_process": "",
     "bootstrap": "3.3.7",
     "wordnet-db": "",
-    "wndb-with-exceptions":""
+    "wndb-with-exceptions":"",
+    "express":"",
+    "body-parser":"",
+    "cookie-parser":"",
+    "multer":""
   },
   "devDependencies": {
     "babel-preset-es2015": "",

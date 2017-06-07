@@ -15,6 +15,16 @@
           }
         }
       },
+      copy: {
+        public:{
+          files:[
+            {expand: true, cwd: "./build/", src: "**/*.js", dest: "./public/js"},
+            {expand: true, cwd: "./src/css/", src: "**/*.*", dest: "./public/css"},
+            {expand: true, cwd: "./src/", src: "index.html", dest: "./public"},
+            {expand: true, cwd: "./lib/", src: "**/*.js", dest: "./public/js"}
+          ]
+        }
+      },
       babel: {
         compile: {
           options: {
@@ -133,7 +143,7 @@
     grunt.registerTask("default", ["watch"])
     //grunt.registerTask("test", ["exec:electron-mocha"])
     grunt.registerTask("unsafe_build", ["browserify", "babel", "clean", "uglify" ])
-    grunt.registerTask("build", ["jshint", "eslint", "unsafe_build"])
+    grunt.registerTask("build", ["jshint", "eslint", "unsafe_build", "copy:public"])
     //grunt.registerTask("build_test", ["build", "test"])
   };
 })();

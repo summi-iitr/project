@@ -1,3 +1,16 @@
+let $ = global.$
+
+let setQueryResult = (res) =>{
+  $('#processed_query').text(res)
+  $('.predicted-answer').show()
+}
+
 module.exports= () => {
-  console.log("I am called")
+  let q_text = $('#demo_q_text').val()
+  $.ajax({
+    type: 'get',
+    url: "http://127.0.0.1:8081/query",
+    data:`text=${q_text}`,
+    success: setQueryResult
+  });
 }
