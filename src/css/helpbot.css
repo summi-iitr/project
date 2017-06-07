@@ -30,7 +30,7 @@ th {
 	height: 9rem;
   margin-top: 1rem;
 }
-#predict_answer, #demo_process_features{
+#predict_answer, #demo_process_features, #demo_process_question{
 	float: right;
 }
 
