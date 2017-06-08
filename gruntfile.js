@@ -143,7 +143,7 @@
     grunt.registerTask("default", ["watch"])
     //grunt.registerTask("test", ["exec:electron-mocha"])
     grunt.registerTask("unsafe_build", ["browserify", "babel", "clean", "uglify" ])
-    grunt.registerTask("build", ["jshint", "eslint", "unsafe_build", "copy:public"])
+    grunt.registerTask("build", [ "unsafe_build", "copy:public"])
     //grunt.registerTask("build_test", ["build", "test"])
   };
 })();

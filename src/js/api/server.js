@@ -13,7 +13,7 @@ app.get('/query', function (req, res) {
 })
 
 
-var server = app.listen(8081, "10.41.119.195", function () {
+var server = app.listen(8081, "10.41.42.64", function () {
   var host = server.address().address
   var port = server.address().port
 

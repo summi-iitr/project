@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<concept id="id_7MGhxcWWVPxA">
+    <title>History of flight</title>
+    <shortdesc>Historically we’ve relied on the engine and propeller model.</shortdesc>
+    <conbody>
+        <p>We’ve moved from the basics of flight to space travel as it was imagined in fiction and
+            seen in movies in under 100 years. Just think about where the next 100 years will take
+            us!</p>
+        <p>Today the promise of space flight is closer than ever. With your own Personal Spaceship
+            you can travel to the stars!</p>
+        <p>None of the work on the Personal Spaceship would have been possible without the research
+            and work done over the years by the good folks at NASA. To learn more about the history
+            of their great achievements, what they are doing at present, and what the future of NASA
+            holds, visit these sites!<table frame="topbot" colsep="0" rowsep="0" id="i724420">
+                <tgroup cols="2" colsep="0" rowsep="0" outputclass="Basic">
+                    <colspec colnum="1" colname="1" colwidth="61*" colsep="0"/>
+                    <colspec colnum="2" colname="2" colwidth="39*" colsep="0"/>
+                    <thead>
+                        <row rowsep="1">
+                            <entry colname="1">Site location</entry>
+                            <entry colname="2">QR Code (Scan/go)</entry>
+                        </row>
+                    </thead>
+                    <tbody>
+                        <row rowsep="0">
+                            <entry colname="1"
+                                    ><p><xref href="http://www.nasa.gov/" format="html" scope="external">http://www.nasa.gov/</xref></p></entry>
+                            <entry colname="2"><fig frame="all" id="i724318">
+                                    <image href="../media/VisitNASA.png" height="72pt"
+                                        width="72pt"/>
+                                </fig></entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table></p>
+    </conbody>
+</concept>
