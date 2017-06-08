@@ -31,6 +31,7 @@
     <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
     <li><a data-toggle="tab" href="#menu3">Question Processing</a></li>
     <li><a data-toggle="tab" href="#menu4">Feature Processing</a></li>
+    <li><a data-toggle="tab" href="#solr-tab">Solr</a></li>
   </ul>
   <div class="tab-content">
 <!-- Home Tab. content -->
@@ -60,6 +61,25 @@
        <button type="button" class="btn btn-lg btn-primary" id ="demo_process_features">Process Features</button>
       </div>
       <div class="predicted-aanswer" style="display:none">
+      </div>
+    </div>
+
+    <div id="solr-tab" class="tab-pane fade">
+      <p>Search</p>
+      <textarea name="search_text" cols="100" rows="5" id ="demo_solr_q_text" placeholder="Enter the Search Query"></textarea>
+      <div class = "predict-button-holder">
+       <button type="button" class="btn btn-lg btn-primary" id ="demo_solr_search">Search</button>
+      </div>
+      <div class="solr-result" style="display:none">
+        <div id="solr_result"></div>
+      </div>
+      <p>Add</p>
+      <textarea name="add_text" cols="100" rows="5" id ="demo_solr_add_text" placeholder="Enter text to be a"></textarea>
+      <div class = "predict-button-holder">
+        <button type="button" class="btn btn-lg btn-primary" id ="demo_solr_add">Add</button>
+      </div>
+      <div class="solr-add-result-holder" style="display:none">
+        <div id="solr-add-result"></div>
       </div>
     </div>
     </div>
