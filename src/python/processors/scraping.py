@@ -22,6 +22,6 @@ def scrape():
         jsonstr = jsonstr[root.tag]
         jsonstr['type'] = root.tag
         jlist.append(jsonstr)
-        output_data(json.dumps(jlist))
+    output_data(jlist)
 
 scrape()
