@@ -1,7 +1,7 @@
 let $ = global.$
 
 let setQueryResult = (res) =>{
-  $('#solr_result').text(res)
+  $('#solr_result').text(JSON.stringify(res))
   $('.solr-result').show()
 }
 
@@ -10,7 +10,7 @@ module.exports= () => {
   $.ajax({
     type: 'get',
     url: "solr/search",
-    data:`q=${q_text}`,
+    data:`q=${JSON.stringify(q_text)}`,
     success: setQueryResult
   });
 }
