@@ -11,9 +11,20 @@ def process(ques):
     namedent = ne_chunk(tagged)   #does the NER 
     return namedent.pos()
     
+def intention(ques):
+    words = word_tokenize(ques)
+    tagged = pos_tag(words)
+    for items in tagged:
+       if any ( [ items[1] == 'WRB', items[1] == 'WP', items[1] == 'WDT'] ):
+           return intent[items[1]][items[0].lower()]
+
+
+
 
 
 question = read_input()
 pos_tags = process(question)
+qtype=intention(question)
 output_data(pos_tags)
+print qtype
 
