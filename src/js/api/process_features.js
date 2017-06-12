@@ -1,5 +1,7 @@
-//const solr_add = require('../solr/add');
 
-module.exports = () => {
-  //solr_add()
+const PythonBridge = require('./python_bridge');
+
+module.exports = (callback) => {
+  let pythonBridge = new PythonBridge()
+  pythonBridge.run('processors/scraping.py', "", callback)
 }

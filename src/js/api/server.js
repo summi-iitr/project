@@ -4,11 +4,12 @@ let query_processor = require('./query')
 let feature_processor = require('./process_features')
 let solr_query_processor = require('./solr/query')
 let solr_add_processor = require('./solr/add')
-
+//const feature_adder = re
 app.use(express.static('public'))
 
 app.get('/query', function (req, res) {
   let callback =  (text) =>{
+    console.log(text)
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
   }
@@ -16,13 +17,15 @@ app.get('/query', function (req, res) {
   query_processor(q_text, callback)
 })
 app.get('/features', function (req, res) {
-  feature_processor()
-  res.setHeader('Content-Type', 'application/json');
-  res.end("done");
-
+  let callback =  (text) =>{
+    console.log(text)
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(text));
+  }
+  feature_processor(callback)
 })
 app.get('/solr/add', function (req, res) {
-  let add_text = JSON.parse(decodeURIComponent(req.query.doc))
+  let add_text = JSON.parse(req.query.doc))
   let callback =  (text) =>{
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
