@@ -25,13 +25,6 @@ def scrape():
     output_data(docmap)
 
 
-<<<<<<< HEAD
-=======
-        jsonstr = parsed
-        jsonstr = jsonstr[root.tag]
-        jsonstr['type'] = root.tag
-        jlist.append(jsonstr)
-    output_data(jlist)
->>>>>>> d45a4d5f313dcea0dbaf3f76f35f748eba2e582f
+
 
 scrape()
