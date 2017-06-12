@@ -1,27 +1,29 @@
-import xmltodict
+
 import json
-import xml.etree.ElementTree as ET
 import os
+from lxml import etree
 from io_utils import output_data
 from file_utils import absolute_path
 path = absolute_path('../../../samples')
 def scrape():
-    jlist=[]
+    docmap={}
 
     for filename in os.listdir(path):
         if not filename.endswith('.xml'):continue
         fullname = os.path.join(path,filename)
-        tree = ET.parse(fullname)
+        tree = etree.parse(fullname)
         root = tree.getroot()
-        document_file = open(fullname)
 
-        original_doc = document_file.read()
-        parsed = xmltodict.parse(original_doc)
+        docmap[filename]={}
+        docmap[filename]['type']=root.tag
+    
+    
+        for child in root:
+            docmap[filename][child.tag]=''.join(child.itertext()).replace('\n','')
 
-        jsonstr = parsed
-        jsonstr = jsonstr[root.tag]
-        jsonstr['type'] = root.tag
-        jlist.append(jsonstr)
-        output_data(json.dumps(jlist))
+
+    output_data(docmap)
+
+
 
 scrape()
