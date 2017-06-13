@@ -4,9 +4,9 @@ let setQueryResult = (res) =>{
   let docs = JSON.parse(res)
   $.each(docs,(id, doc) =>{
     $.ajax({
-      type: 'get',
+      type: 'post',
       url: "solr/add",
-      data:`doc=${JSON.stringify(doc)}`,
+      data:JSON.stringify(doc)
     });
   })
 }

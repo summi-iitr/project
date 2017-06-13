@@ -1,8 +1,14 @@
 let solr = require('solr')
-let client = solr.createClient({core:"/techproducts"});
+let client = solr.createClient({core:"/gettingstarted"});
 
-module.exports = (query_text, callback) =>{
-  var query = `text_t:${query_text}`
+module.exports = (query_text, type, callback) =>{
+  let query
+  if(type !== 'undefined'){
+    query = `type:${type} AND text:${query_text}`
+  }
+  else{
+    query = `${query_text}`
+  }
   client.query(query, function(err, response) {
     if (err){
       console.error(err);

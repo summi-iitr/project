@@ -8,9 +8,9 @@ from consts import intent
 def process(ques):
     words = word_tokenize(ques)
     tagged = pos_tag(words)
-    namedent = ne_chunk(tagged)   #does the NER 
+    namedent = ne_chunk(tagged)   #does the NER
     return namedent.pos()
-    
+
 def intention(ques):
     words = word_tokenize(ques)
     tagged = pos_tag(words)
@@ -41,7 +41,6 @@ question = read_input()
 pos_tags = process(question)
 qtype=intention(question)
 features=nounword(question)
-#output_data(pos_tags)
-#print qtype
-output_data(features)
 
+res = {"pos_tags": pos_tags, "qtype": qtype, "features":features}
+output_data(res)

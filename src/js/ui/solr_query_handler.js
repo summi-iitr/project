@@ -5,7 +5,7 @@ let setQueryResult = (res) =>{
   $('.solr-result').show()
 }
 
-module.exports= () => {
+module.exports= (queryMap, callback = setQueryResult, ) => {
   let q_text = $('#demo_solr_q_text').val()
   $.ajax({
     type: 'get',

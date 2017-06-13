@@ -1,15 +1,16 @@
 let $ = global.$
 
 let setQueryResult = (res) =>{
-  $('#solr_result').text(res)
-  $('.solr-result').show()
+  $('#processed_query').text(res)
+  $('.predicted-answer').show()
 }
 
-module.exports= () => {
-  let q_text = $('#demo_solr_q_text').val()
+module.exports= (callback = setQueryResult) => {
+
+  let q_text = $('#demo_q_text').val()
   $.ajax({
     type: 'get',
-    url: "solr/search",
+    url: "query",
     data:`q=${q_text}`,
     success: setQueryResult
   });

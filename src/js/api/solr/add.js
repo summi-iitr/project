@@ -1,5 +1,5 @@
 let solr = require('solr')
-let client = solr.createClient({core:"/techproducts"});
+let client = solr.createClient({core:"/gettingstarted"});
 module.exports = (doc, callback)=>{
 
   /*var doc1 = {
@@ -13,10 +13,12 @@ module.exports = (doc, callback)=>{
     text_t: 'Wuzz fizz drizzle'
   };
 */
+
+
   client.add(doc, function(err) {
-    if (err) console.error(err);
+    if (err) console.error(`Error occurred during Add ${err}`);
     client.commit(function(err) {
-      if (err) console.error(err);
+      if (err) console.error(`Error occurred during Commit ${err}`);
       console.log(`Added ${JSON.stringify(doc)}`);
       if(callback)
         callback(doc)

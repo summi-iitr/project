@@ -9,23 +9,23 @@ app.use(express.static('public'))
 
 app.get('/query', function (req, res) {
   let callback =  (text) =>{
-    console.log(text)
+    //console.log(text)
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
   }
-  let q_text = decodeURIComponent(req.query.text)
+  let q_text = decodeURIComponent(req.query.q)
   query_processor(q_text, callback)
 })
 app.get('/features', function (req, res) {
   let callback =  (text) =>{
-    console.log(text)
+    //console.log(text)
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
   }
   feature_processor(callback)
 })
-app.get('/solr/add', function (req, res) {
-  let add_text = JSON.parse(req.query.doc))
+app.post('/solr/add', function (req, res) {
+  let add_text= JSON.parse(req.body)
   let callback =  (text) =>{
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
@@ -33,12 +33,13 @@ app.get('/solr/add', function (req, res) {
   solr_add_processor(add_text, callback)
 })
 app.get('/solr/search', function (req, res) {
-  let search_query = JSON.parse(decodeURIComponent(req.query.q))
+  let search_query = decodeURIComponent(req.query.q)
+  let search_type = decodeURIComponent(req.query.type)
   let callback =  (text) =>{
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
   }
-  solr_query_processor(search_query, callback)
+  solr_query_processor(search_query, search_type, callback)
 })
 var server = app.listen(8081, "10.41.42.64", function () {
   var host = server.address().address

@@ -13,16 +13,15 @@ def scrape():
         fullname = os.path.join(path,filename)
         tree = etree.parse(fullname)
         root = tree.getroot()
-        newElement={}
 
-    
-    
         for child in root:
-            newElement['filename']=filename
-            newElement['type']=child.tag
-            newElement['text']=''.join(child.itertext()).replace('\n','')
-            docmap.append(newElement)
+            if(child.tag != 'title'):
+                newElement={}
+                newElement["filename"] = filename
+                newElement['type']=child.tag
 
+                newElement["text"]=''.join(child.itertext()).replace('\n','')
+                docmap.append(newElement)
 
     output_data(docmap)
 
