@@ -45,7 +45,8 @@
     "grunt-eslint": "",
     "grunt-exec": "",
     "grunt-sass": "",
-    "load-grunt-tasks": ""
+    "load-grunt-tasks": "",
+    "solr-query-builder":""
   },
   "devDependencies": {
 

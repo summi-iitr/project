@@ -4,12 +4,12 @@ let client = solr.createClient({core:"/gettingstarted"});
 module.exports = (query_text, type, callback) =>{
   let query
   if(type !== 'undefined'){
-    query = `type:${type} AND text:${query_text}`
+    query = `text:* ${query_text}*`
   }
   else{
-    query = `${query_text}`
+    query = `text:${query_text}`
   }
-  client.query(query, function(err, response) {
+  client.query(query,{fq:`type=${type}`}, function(err, response) {
     if (err){
       console.error(err);
       callback([])

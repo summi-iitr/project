@@ -2,21 +2,23 @@
 //const solr_query_handler = require('./solr_query_handler')
 let $ = global.$
 const queryTypeMap = {
-  Information:"concept",
-  Process:"activity"
+  Information:"shortdesc",
+  Process:"taskbody"
 }
 
 let onSolrQueryResult = (res) =>{
   if(res && res.numFound >0){
     $('.predicted-answer').show()
-    $('#processed_answer').text(JSON.stringify(res.docs[0]))
+    $('#processed_answer').text(res.docs[0].text[0])
   }
 }
 
 let onQueryResult = (res) =>{
-  let q_text = $('#q_text').val()
+  //let q_text = $('#q_text').val()
   let query_result = JSON.parse(res)
   let query_param = {}
+  let q_features = query_result.features || []
+  let q_text = q_features.join(' ')
   let query_string = `q=${JSON.stringify(q_text)}`
   if(query_result.qtype){
     query_param.type = queryTypeMap[query_result.qtype]
