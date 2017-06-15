@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<task id="id_jw4fU6E6dEJ5">
+    <title>Adjust the seat temperature</title>
+    <shortdesc>Everyone likes to have a seat at a setting that is most
+        comfortable to them and the seat coolness or warmth is fully configurable.</shortdesc>
+    <taskbody>
+        <context><indexterm>seat temperature</indexterm><p>There is a minimum and maximum defined by
+                your administrator to ensure seats are not uncomfortable.</p></context>
+        <steps>
+            <step>
+                <cmd>Launch your personal Primary Control dialog.</cmd>
+            </step>
+            <step>
+                <cmd>Select <uicontrol>Seat Configuration</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Layout</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Temperature</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Adjust the temperature up or down.</cmd>
+                <info><p><image href="../media/WarmCoolForC.gif"></image></p></info>
+            </step>
+        </steps>
+        <result product="ProductA"><p>The temperature blinks until the new setting is reached
+                at which point the temperature remains steady.</p></result>
+    </taskbody>
+</task>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<topic id="id_Jnvz9Hek2em6">
+    <title>Operating limitations</title>
+    <shortdesc>There are a wide set of limitations and the User Guide only lists a few key ones you
+        need to know. Ensure you review the Flight Operations Manual.</shortdesc>
+    <body>
+        <note type="caution"><p>Limitations are the operational limits, which if exceeded, affect
+                safety or result in performance loss.</p></note>
+    </body>
+</topic>

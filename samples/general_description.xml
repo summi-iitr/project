@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<topic id="id_6igcFeFy1uIs">
+    <title>General description</title>
+    <shortdesc>The section provides general background information about the vehicle and its fuel
+        systems.</shortdesc>
+    <body>
+        <p>Flight used to depend on an aircraft engine and propeller. Today’s modern Personal
+            Spaceship is ready to go with a hydrogen and oxygen mix in an external tank and solid
+            rockets for auxiliary takeoff power.</p>
+        <dl>
+            <dlentry>
+                <dt>Propeller based flight</dt>
+                <dd>A type of fan that converts rotating motions into thrust. This method of
+                    powering flight is not applicable to your vehicle, but is a good historical
+                    reference.</dd>
+            </dlentry>
+            <dlentry>
+                <dt>Rocket based flight</dt>
+                <dd>A spacecraft obtains thrust from a rocket engine which is not reliant on the
+                    atmosphere and work very well in space.</dd>
+            </dlentry>
+        </dl>
+    </body>
+</topic>

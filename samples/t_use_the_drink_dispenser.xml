@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<task id="id_orWHVajF6dCQ">
+    <title>Use the drink dispenser</title>
+    <shortdesc>When in space it’s important to stay hydrated but at the same time it can be
+        difficult to drink fluids without having liquid floating around.</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd><indexterm>drink dispenser</indexterm>Launch your personal Primary Control
+                    dialog.</cmd>
+            </step>
+            <step>
+                <cmd>Select <uicontrol>Drinks</uicontrol>.</cmd>
+                <info><p>If the tube is not at your usual seat, and you are using someone else’s
+                        dispenser, first change the straw tip.</p></info>
+                <substeps>
+                    <substep>
+                        <cmd>Remove the numbered and color coded straw tip that is currently in
+                            use.</cmd>
+                    </substep>
+                    <substep>
+                        <cmd>Replace the straw tip with another one from the Straw Tip Repository
+                            located next to the straw.</cmd>
+                    </substep>
+                </substeps>
+                <stepresult><p>A seat slot opens exposing the drinking tube.</p></stepresult>
+            </step>
+            <step>
+                <cmd>Place the drinking tube into your mouth.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Options</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Select the type of drink you wish to consume.</cmd>
+                <?Fm Condstart ProductA?>
+                <info><draft-comment author="bernard"><note type="note" product="AuthorNotes"
+                                ><p>Check the drink types that are supported to ensure that we
+                                correctly ID the types for the two vehicle classes. We report the
+                                model B as Hot/Cool and Model A has
+                        Hot/Cool/Cold.</p></note></draft-comment><p><image
+                            href="../media/HotCoolCold.gif"/></p></info>
+                <?Fm Condend ProductA?>
+                <stepxmp product="ProductA"><p>If you want a drink such as an Earl Grey tea with a
+                        bit of honey in it, then select <uicontrol>Hot</uicontrol>. If you want a
+                        room temperature drink, select <uicontrol>Cool</uicontrol>.<ph
+                            product="ProductA"> For an icy beverage, select
+                                <uicontrol>Cold</uicontrol>.</ph></p></stepxmp>
+                <choices>
+                    <choice><uicontrol>Hot </uicontrol>includes drinks served noticeably above room
+                        temperature.</choice>
+                    <choice><uicontrol>Cool </uicontrol>includes drinks served at or close to room
+                        temperature.</choice>
+                    <choice product="ProductA"><uicontrol>Cold </uicontrol>includes drinks served
+                        well below room temperature.</choice>
+                </choices>
+            </step>
+            <step>
+                <cmd>Choose the specific drink you desire.</cmd>
+                <info><p>Based on your choice you may have to make further selections.</p></info>
+            </step>
+        </steps>
+        <postreq><p>Suck on the drinking tube and enjoy the beverage of your choice.</p></postreq>
+    </taskbody>
+</task>

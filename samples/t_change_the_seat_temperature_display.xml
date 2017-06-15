@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<task id="id_6lUGdS2lzu9r">
+    <title>Change the seat temperature display</title>
+    <shortdesc>Personal preference for Fahrenheit or Celsius can be
+        set.</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd><indexterm>seat temperature display</indexterm>Launch your personal Primary
+                    Control dialog.</cmd>
+            </step>
+            <step>
+                <cmd>Select <uicontrol>Seat Configuration</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Layout</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Temperature</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Toggle the temperature setting.</cmd>
+                <info><p><image href="../media/WarmCoolForC.gif"></image></p></info>
+            </step>
+        </steps>
+    </taskbody>
+</task>

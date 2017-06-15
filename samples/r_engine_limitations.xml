@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<reference id="id_3G6cot9rqmLR">
+    <title>Engine limitations</title>
+    <shortdesc>While you can safely operate the engines at up to 100% of the power level, there is
+        also a requirement to operate at a range of powers levels.</shortdesc>
+    <refbody>
+        <section id="i721388"><indexterm>engine limitations</indexterm><p>An upper range of 109% has
+                been set as a temporary override to the engine limits. This may be run for up to 600
+                seconds of operation. </p><note type="caution"><p>Actual flight performance has not
+                    been tested beyond time and power levels for more than 600 seconds. Exceeding
+                    this can permanently damage the vehicle.</p></note><p>The primary computer
+                system monitors the temperature of the turbopump components including:<ul>
+                    <li><p>high pressure fuel pump</p></li>
+                    <li><p>high pressure oxidizer</p></li>
+                    <li><p>high pressure pump at low temperature</p></li>
+                </ul></p><p>Temperatures exceeding operating limits will result in a main engine
+                shutdown. If the captain has manually prevented this the temperature can be forced
+                to exceed limits.</p></section>
+    </refbody>
+</reference>

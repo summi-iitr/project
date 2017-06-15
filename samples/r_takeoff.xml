@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<reference id="id_CZi5Xl2NoMfY">
+    <title>Takeoff</title>
+    <shortdesc>The maximum airspeed for the vehicle is 492 knots equivalent airspeed (KEAS) where <image href="../media/Equation.gif" /> (see figure below).</shortdesc>
+    <refbody>
+        <section id="i721332">
+           <p><indexterm>takeoff</indexterm>There is no official minimum airspeed
+                for ascent.<fig id="i721322">
+                    <image href="../media/Arc.png" scale="50"></image>
+                </fig></p></section>
+    </refbody>
+</reference>

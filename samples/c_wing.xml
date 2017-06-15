@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<concept id="id_PvsdLX329lgW">
+    <title>Wing</title>
+    <shortdesc>The wing is an aerodynamic lifting surface that provides conventional lift and
+        control for the spaceship.</shortdesc>
+    <conbody>
+        <p><indexterm>wing</indexterm>Both wings are made up of many parts. Details on the specific
+            wing configuration can be found in the parts catalog included with your customized
+                vehicle.<fig id="i724274">
+                <title>Wing assembly</title>
+                <image href="../media/Wing.gif"></image>
+            </fig></p>
+    </conbody>
+</concept>
