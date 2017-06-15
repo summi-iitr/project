@@ -19,7 +19,7 @@ def scrape():
                 newElement={}
                 newElement["filename"] = filename
                 newElement['type']=child.tag
-                newElement["text"]=''.join(child.itertext()).replace('\n', '.')
+                newElement["text"]=''.join(child.itertext())
                 docmap.append(newElement)
 
 

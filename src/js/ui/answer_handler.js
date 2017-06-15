@@ -9,7 +9,9 @@ const queryTypeMap = {
 let onSolrQueryResult = (res) =>{
   if(res && res.numFound >0){
     $('.predicted-answer').show()
-    $('#processed_answer').text(res.docs[0].text[0])
+    let text = res.docs[0].text[0]
+    text = text.replace(/(\n)+/g, '<br />');
+    $('#processed_answer').html(text)
   }
 }
 
