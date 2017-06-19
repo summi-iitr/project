@@ -1,10 +1,20 @@
-
+import nltk
+from nltk import word_tokenize,pos_tag
 import json
 import os
 from lxml import etree
 from io_utils import output_data
 from file_utils import absolute_path
 path = absolute_path('../../../samples')
+
+def text_content(node):
+    result=[]
+    for elem in node.getiterator():
+        text=elem.text
+        if text and text.strip():
+            result.append(text)
+    return result
+
 def scrape():
     docmap=[]
 
@@ -19,13 +29,44 @@ def scrape():
                 newElement={}
                 newElement["filename"] = filename
                 newElement['type']=child.tag
-                newElement["text"]=''.join(child.itertext())
+                newElement["text"]=' '.join(text_content(child)).replace('\n',' ')
+
                 docmap.append(newElement)
 
 
-    output_data(docmap)
+    return docmap
+
+def parse(doc):
+    grammar= r"""
+        DEF:{<DT>?<NN.*><VB.*><DT>}
+        STP:{<VB.*><PRP.*>}
+        STP:{<VB.*><DT><NN>}
+        """
+
+    cp=nltk.RegexpParser(grammar)
+
+    for elem in doc:
+        value=elem['text']
+        tokenized = word_tokenize(value)
+        tagged = pos_tag(tokenized)
+        result = cp.parse(tagged)
+
+        for subtree in result.subtrees():
+            if ( subtree.label() == 'DEF'):
+                elem['class']='DEF'
+                lis= subtree.leaves()
+                for item in lis:
+                    if (item[1]=='NN'):
+                        elem['object']=item[0]
+        
+            elif ( subtree.label() == 'STP'):
+                        elem['class']='STP'
+            else:
+                        elem['class']='DES'
 
 
+    output_data(doc)
 
 
-scrape()
+doc=scrape()
+parse(doc)

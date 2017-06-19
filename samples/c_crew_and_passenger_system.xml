@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<concept id="id_OAN43drshOnx">
+    <title>Crew and passenger system</title>
+    <shortdesc>Many pieces of equipment and systems that the crew and passengers use are only
+        covered here, and not in other parts of the manual. This is largely due to the nature of
+        these parts. They are largely just to make the crew comfortable. They don’t play a specific
+        role in the ongoing operation of the vehicle.</shortdesc>
+    <conbody>
+        <draft-comment author="bernard"><p>While the content contained in this section isn’t
+                specifically mentioned in other areas, there will be references to it. Please ensure
+                all reviewers take extra time to review for accuracy as the content may cross many
+                roles and responsibilities on the team.</p></draft-comment>
+    </conbody>
+</concept>
