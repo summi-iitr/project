@@ -28,7 +28,7 @@ def scrape():
             if(child.tag != 'title'):
                 newElement={}
                 newElement["filename"] = filename
-                newElement['type']=child.tag
+                #newElement['type']=child.tag
                 newElement["text"]=' '.join(text_content(child)).replace('\n',' ')
 
                 docmap.append(newElement)
@@ -39,6 +39,7 @@ def scrape():
 def parse(doc):
     grammar= r"""
         DEF:{<DT>?<NN.*><VB.*><DT>}
+        DEF:{<JJ><NN.*><VB.*>}
         STP:{<VB.*><PRP.*>}
         STP:{<VB.*><DT><NN>}
         """
@@ -53,16 +54,16 @@ def parse(doc):
 
         for subtree in result.subtrees():
             if ( subtree.label() == 'DEF'):
-                elem['class']='DEF'
+                elem['type']='DEF'
                 lis= subtree.leaves()
                 for item in lis:
                     if (item[1]=='NN'):
                         elem['object']=item[0]
         
             elif ( subtree.label() == 'STP'):
-                        elem['class']='STP'
+                        elem['type']='STP'
             else:
-                        elem['class']='DES'
+                        elem['type']='DES'
 
 
     output_data(doc)

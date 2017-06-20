@@ -2,8 +2,8 @@
 //const solr_query_handler = require('./solr_query_handler')
 let $ = global.$
 const queryTypeMap = {
-  Information:"shortdesc",
-  Process:"taskbody"
+  Information:"DEF",
+  Process:"STP"
 }
 
 let onSolrQueryResult = (res) =>{

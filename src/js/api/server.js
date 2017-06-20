@@ -41,7 +41,7 @@ app.get('/solr/search', function (req, res) {
   }
   solr_query_processor(search_query, search_type, callback)
 })
-var server = app.listen(8081, "10.41.42.64", function () {
+var server = app.listen(8081, "127.0.0.1", function () {
   var host = server.address().address
   var port = server.address().port
 
