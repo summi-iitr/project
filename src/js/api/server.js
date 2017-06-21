@@ -33,13 +33,19 @@ app.post('/solr/add', function (req, res) {
   solr_add_processor(add_text, callback)
 })
 app.get('/solr/search', function (req, res) {
-  let search_query = decodeURIComponent(req.query.q)
-  let search_type = decodeURIComponent(req.query.type)
   let callback =  (text) =>{
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
   }
-  solr_query_processor(search_query, search_type, callback)
+  try{
+    let search_query = decodeURIComponent(req.query.q)
+    let search_type = decodeURIComponent(req.query.type)
+
+    solr_query_processor(search_query, search_type, callback)
+  }
+  catch(e){
+    callback(e)
+  }
 })
 var server = app.listen(8081, "127.0.0.1", function () {
   var host = server.address().address
