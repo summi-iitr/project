@@ -21,7 +21,7 @@ let onQueryResult = (res) =>{
   let query_param = {}
   let q_features = query_result.features || []
   let q_text = q_features.join(' ')
-  let query_string = `q=${JSON.stringify(q_text)}`
+  let query_string = `q=${q_text}`
   if(query_result.qtype){
     query_param.type = queryTypeMap[query_result.qtype]
     query_string += `&type=${query_param.type}`
