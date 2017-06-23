@@ -1,5 +1,5 @@
 import nltk
-from nltk import word_tokenize,pos_tag
+from nltk import word_tokenize,pos_tag,sent_tokenize
 import json
 import os
 from lxml import etree
@@ -25,11 +25,14 @@ def scrape():
         root = tree.getroot()
 
         for child in root:
+            if(child.tag == 'title'):
+                titel = ' '.join(text_content(child)).replace('\n','')
             if(child.tag != 'title'):
                 newElement={}
                 newElement["filename"] = filename
-                #newElement['type']=child.tag
-                newElement["text"]=' '.join(text_content(child)).replace('\n',' ')
+                newElement['title']=titel
+                content = ' '.join(text_content(child)).replace('\n','')
+                newElement["text"]=''.join(sent_tokenize(content))
 
                 docmap.append(newElement)
 
@@ -56,14 +59,12 @@ def parse(doc):
             if ( subtree.label() == 'DEF'):
                 elem['type']='DEF'
                 lis= subtree.leaves()
-                for item in lis:
-                    if (item[1]=='NN'):
-                        elem['object']=item[0]
+            
         
             elif ( subtree.label() == 'STP'):
                         elem['type']='STP'
-            else:
-                        elem['type']='DES'
+            #else:
+                        #elem['type']='DES'
 
 
     output_data(doc)

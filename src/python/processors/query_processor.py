@@ -1,43 +1,37 @@
 import sys
-import nltk
-from nltk import word_tokenize, sent_tokenize ,pos_tag ,ne_chunk
-from nltk.corpus import stopwords
+import spacy
+from spacy.en import English
 from io_utils import read_input, output_data
 from consts import intent
 
+nlp = spacy.load('en')
+
 def process(ques):
-    words = word_tokenize(ques)
-    tagged = pos_tag(words)
-    namedent = ne_chunk(tagged)   #does the NER
-    return namedent.pos()
+    tagged = []
+    parsed = nlp(ques)
+    for word in parsed:
+        tupes = []
+        tupes.append(word.text)
+        tupes.append(word.tag_)
+        tagged.append(tupes)
+    return tagged
 
 def intention(ques):
-    words = word_tokenize(ques)
-    tagged = pos_tag(words)
-    for items in tagged:
-       if any ( [ items[1] == 'WRB', items[1] == 'WP', items[1] == 'WDT'] ):
-           return intent[items[1]][items[0].lower()]
+    parsed = nlp(ques)
+    for items in parsed:
+       if any ( [ items.tag_ == 'WRB', items.tag_ == 'WP', items.tag_ == 'WDT'] ):
+           return intent[items.tag_][items.text.encode('ascii','ignore').lower()]
 
 def nounword(ques):
-    words = word_tokenize(ques)
-    tagged = pos_tag(words)
-
-    grammar = r"""
-            NP:{<NN.*>}   #CHUNKING ALL THE NOUNS
-             """
-    cp = nltk.RegexpParser(grammar)
-    result = cp.parse(tagged)
-    featlist=[]
-    for subtree in result.subtrees():
-        if any( [subtree.label() == 'VP' , subtree.label() == 'NP'] ):
-            featlist.append( subtree.leaves()[0][0] )
-
+    featlist = []
+    parsed = nlp(ques)
+    for np in parsed.noun_chunks :
+        featlist.append(np.text)
 
     return featlist
 
-
-
 question = read_input()
+question = question.decode('utf-8','ignore')
 pos_tags = process(question)
 qtype=intention(question)
 features=nounword(question)
