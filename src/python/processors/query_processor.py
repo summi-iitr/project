@@ -25,8 +25,14 @@ def intention(ques):
 def nounword(ques):
     featlist = []
     parsed = nlp(ques)
-    for np in parsed.noun_chunks :
-        featlist.append(np.text)
+    for np in parsed :
+    #for np in parsed.noun_chunks :
+        #if():
+            #featlist.append(np.text)
+
+        if (np.pos_ == 'NOUN' or np.pos_ == 'PROPN'):
+            if(np.tag_ != 'WP'):
+                featlist.append(np.text)
 
     return featlist
 
