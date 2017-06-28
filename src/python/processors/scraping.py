@@ -38,17 +38,22 @@ def scrape():
             if(child.tag == 'title'):
                 titel = ' '.join(text_content(child)).replace('\n','')
             if(child.tag != 'title'):
-                content = ' '.join(text_content(child)).replace('\n',' ')
-                content = content.encode('ascii','ignore')
-                pathx = xapthget(tree,child)
-                newElement={}
-                newElement["filename"] = filename
-                newElement['title']=titel
-                newElement["text"]=content
-                newElement["para"] = "True"
-                newElement['xpath'] = pathx
-                #newElement['object'] = 't'
-                docmap.append(newElement)
+                for tag in child:
+                    content = ' '.join(text_content(child)).replace('\n',' ')
+                    content = content.encode('ascii','ignore')
+                    content = content.decode('utf-8','ignore')
+                    pathx = xapthget(tree,tag)
+                    doc = nlp(content)
+                    senlist = doc.sents
+                    for sent in senlist:
+                        newElement={}
+                        newElement["filename"] = filename
+                        newElement['title']=titel
+                        newElement["text"]=sent.text
+                        newElement["para"] = 'False'
+                        newElement['xpath'] = pathx
+
+                        docmap.append(newElement)
 
 
     return(docmap)
@@ -81,7 +86,7 @@ def linescrape(docmap):
 
                     docmap.append(newElement)
 
-    #return(docmap)
+    #output_data(docmap)
 
 
 def parse(doc):
@@ -162,7 +167,7 @@ def treevisual (doc):
 def typedef (doc):
 
     for elem in doc:
-        if(elem["para"] == 'False'):
+        #if(elem["para"] == 'False'):
             word = elem['text']
             word = word.decode('utf-8','ignore')
             parsed = nlp(word)
@@ -185,9 +190,9 @@ def typedef (doc):
 
 
 docu=scrape()
-linescrape(docu)
+#linescrape(docu)
 subobjadder(docu)
-#treevisual(docu)
+treevisual(docu)
 parse(docu)
 typedef(docu)
 
