@@ -2,7 +2,7 @@
 <!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
 <task id="id_orWHVajF6dCQ">
     <title>Use the drink dispenser</title>
-    <shortdesc>When in space it’s important to stay hydrated but at the same time it can be
+    <shortdesc>When in space it's important to stay hydrated but at the same time it can be
         difficult to drink fluids without having liquid floating around.</shortdesc>
     <taskbody>
         <steps>
@@ -12,7 +12,7 @@
             </step>
             <step>
                 <cmd>Select <uicontrol>Drinks</uicontrol>.</cmd>
-                <info><p>If the tube is not at your usual seat, and you are using someone else’s
+                <info><p>If the tube is not at your usual seat, and you are using someone else's
                         dispenser, first change the straw tip.</p></info>
                 <substeps>
                     <substep>
