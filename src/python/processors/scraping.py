@@ -38,11 +38,10 @@ def scrape():
             if(child.tag == 'title'):
                 titel = ' '.join(text_content(child)).replace('\n','')
             if(child.tag != 'title'):
-                for tag in child:
                     content = ' '.join(text_content(child)).replace('\n',' ')
                     content = content.encode('ascii','ignore')
                     content = content.decode('utf-8','ignore')
-                    pathx = xapthget(tree,tag)
+                    pathx = xapthget(tree,child)
                     doc = nlp(content)
                     senlist = doc.sents
                     for sent in senlist:
