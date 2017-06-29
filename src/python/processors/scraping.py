@@ -40,19 +40,19 @@ def scrape():
             if(child.tag != 'title'):
                     content = ' '.join(text_content(child)).replace('\n',' ')
                     content = content.encode('ascii','ignore')
-                    content = content.decode('utf-8','ignore')
+                    
                     pathx = xapthget(tree,child)
-                    doc = nlp(content)
-                    senlist = doc.sents
-                    for sent in senlist:
-                        newElement={}
-                        newElement["filename"] = filename
-                        newElement['title']=titel
-                        newElement["text"]=sent.text
-                        newElement["para"] = 'False'
-                        newElement['xpath'] = pathx
+                    
+                    
+                    
+                    newElement={}
+                    newElement["filename"] = filename
+                    newElement['title']=titel
+                    newElement["text"]=content
+                    newElement["para"] = 'True'
+                    newElement['xpath'] = pathx
 
-                        docmap.append(newElement)
+                    docmap.append(newElement)
 
 
     return(docmap)
@@ -93,6 +93,7 @@ def parse(doc):
         
         STP:{<VB.*><PRP.*>}
         STP:{<VB.*><DT>?<NN>}
+        STP:{<VB.*><DT>?<JJ.*>*<NN.*>}
         """
 
     cp=nltk.RegexpParser(grammar)
@@ -124,7 +125,7 @@ def parse(doc):
 def subobjadder (doc):
 
     for elem in doc:
-        if(elem["para"] == 'False'):
+        #if(elem["para"] == 'False'):
             sub =[]
             obj =[]
             words = elem['text']
@@ -189,7 +190,7 @@ def typedef (doc):
 
 
 docu=scrape()
-#linescrape(docu)
+linescrape(docu)
 subobjadder(docu)
 treevisual(docu)
 parse(docu)
