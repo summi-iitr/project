@@ -2,7 +2,8 @@ import sys
 import spacy
 from spacy.en import English
 from io_utils import read_input, output_data
-from consts import intent
+from consts import intent 
+
 
 nlp = spacy.load('en')
 
@@ -27,7 +28,7 @@ def nounword(ques):
     parsed = nlp(ques)
     #for np in parsed :
     for np in parsed.noun_chunks :
-        if(np.root.tag_ != 'WP'):
+        if  ( np.root.tag_ != "WP"):
             featlist.append(np.text)
 
         #if (np.pos_ == 'NOUN' or np.pos_ == 'PROPN'):
