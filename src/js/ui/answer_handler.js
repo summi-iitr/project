@@ -1,17 +1,20 @@
 //const query_handler = require('./process_query_handler')
 //const solr_query_handler = require('./solr_query_handler')
+let ui_utils = require('./utils')
 let $ = global.$
 const queryTypeMap = {
   Information:"DEF",
   Process:"STP"
 }
 
+
+
 let onSolrQueryResult = (res) =>{
   if(res && res.numFound >0){
+    let top_docs = res.docs.splice(0, 5)
+    let answerHtml = ui_utils.getListHtml(top_docs)
     $('.predicted-answer').show()
-    let text = res.docs[0].text[0]
-    text = text.replace(/(\n)+/g, '<br />');
-    $('#processed_answer').html(text)
+    $('#processed_answer').html(answerHtml)
   }
 }
 
@@ -22,6 +25,7 @@ let onQueryResult = (res) =>{
   let q_features = query_result.features || []
   let q_text = q_features.join(' ')
   let query_string = `q=${q_text}`
+  console.log(query_result.qtype)
   if(query_result.qtype){
     query_param.type = queryTypeMap[query_result.qtype]
     query_string += `&type=${query_param.type}`
