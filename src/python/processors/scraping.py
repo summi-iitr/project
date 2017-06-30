@@ -8,6 +8,7 @@ from spacy.en import English
 from io_utils import output_data
 from file_utils import absolute_path
 from consts import SUBJECTS,OBJECTS
+from subverb import findSVAOs
 
 nlp = spacy.load('en')                          
 parser = English()
@@ -82,6 +83,7 @@ def linescrape(docmap):
                     newElement["text"]=sent.text
                     newElement["para"] = 'False'
                     newElement['xpath'] = pathx
+                    newElement['SVO'] = findSVAOs(sent)
 
                     docmap.append(newElement)
 
@@ -192,7 +194,7 @@ def typedef (doc):
 docu=scrape()
 linescrape(docu)
 subobjadder(docu)
-treevisual(docu)
+#treevisual(docu)
 parse(docu)
 typedef(docu)
 
