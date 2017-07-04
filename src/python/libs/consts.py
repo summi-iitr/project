@@ -10,4 +10,4 @@ intent={'WRB':{'how':'Process', 'where':'Place', 'why':'Reason','when':'Time'},
 
 SUBJECTS = ["nsubj", "nsubjpass", "csubj", "csubjpass", "agent"]
 OBJECTS = ["dobj", "dative", "attr", "oprd","pobj"]
-
+VERBS = ["VB","VBD","VBG","VBN","VBP","VBZ"]

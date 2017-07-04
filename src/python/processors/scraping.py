@@ -30,6 +30,7 @@ def scrape():
     docmap=[]
 
     for filename in os.listdir(path):
+
         if not filename.endswith('.xml'):continue
         fullname = os.path.join(path,filename)
         tree = etree.parse(fullname)
@@ -83,7 +84,13 @@ def linescrape(docmap):
                     newElement["text"]=sent.text
                     newElement["para"] = 'False'
                     newElement['xpath'] = pathx
-                    newElement['SVO'] = findSVAOs(sent)
+                    svotrips = findSVAOs(sent)
+                    a = []
+                    for elem in svotrips:
+                        strns = ' '.join(elem)
+                        a.append(strns)
+
+                    newElement['SVO'] = a
 
                     docmap.append(newElement)
 

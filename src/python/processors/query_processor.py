@@ -2,7 +2,7 @@ import sys
 import spacy
 from spacy.en import English
 from io_utils import read_input, output_data
-from consts import intent 
+from consts import intent , OBJECTS 
 
 
 nlp = spacy.load('en')
@@ -37,11 +37,30 @@ def nounword(ques):
 
     return featlist
 
+def verboj(ques):
+    #obj = []
+    feat= []
+    parsed = nlp(ques)
+
+    for word in parsed:
+        if any ( [ word.tag_ == "VB" , word.tag_ == "VBN" , word.tag_ == "VBD" ] ):
+             feat.append(word.text)
+
+    for np in parsed.noun_chunks:
+        if(np.root.dep_ in OBJECTS):
+            feat.append(np.text)
+
+    #feat = pverb + ' ' + ' '.join(obj)
+    return feat
+
 question = read_input()
 question = question.decode('utf-8','ignore')
 pos_tags = process(question)
 qtype=intention(question)
-features=nounword(question)
+if(qtype == 'Process'):
+    features = verboj(question)
+else:
+    features = nounword(question)
 
 res = {"pos_tags": pos_tags, "qtype": qtype, "features":features}
 output_data(res)

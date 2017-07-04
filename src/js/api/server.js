@@ -47,7 +47,7 @@ app.get('/solr/search', function (req, res) {
     callback(e)
   }
 })
-var server = app.listen(8082, "10.41.42.247", function () {
+var server = app.listen(8082, "10.41.41.175", function () {
   var host = server.address().address
   var port = server.address().port
 
