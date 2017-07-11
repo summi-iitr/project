@@ -1,7 +1,11 @@
 from scraping import docu
-#from query_processor import res
+from query_processor import res
 from io_utils import output_data
-
+const queryTypeMap = {
+  "DEF":"definition",
+  "STP":"step"
+  "DES":"description"
+}
 stepindi = ['steps','substeps','cmd']
 defindi = ['conbody','shortdesc','body','context']
 
@@ -11,26 +15,8 @@ class rules:
 		               'definition': 0,
 		               'description': 0}
 
-		# words = element['xpath'].split("/")
-		# if( words[-1] in stepindi):
-		# 	inhash['steps']+=10
-		# if( words[-1] in defindi):
-		# 	inhash['definition']+=10
-		# 	inhash['description']+=10
-
-		# restype = element['type']
-		# if(restype == 'STP'):
-		# 	inhash['step']+=20
-		# if(restype == 'DEF'):
-		# 	inhash['definition']+=20
-		# if(restype == 'DES'):
-		# 	inhash['description']+=20
-
-		# return inhash
 	def getDitaScore(self,feature):
 		return {}
-
-
 
 class StepsRule(rules):
 	#def __init__(self,class_r) :
@@ -100,6 +86,29 @@ class DescRule(rules):
 		return self.checkdesc(feature)
 
 
+# class QueryRule():
+
+# 	def queryscore(element):
+# 		q_text = res['features'].join(' ')
+# 		if( q_text == element['title'] ):
+# 			self.hash[queryTypeMap[res['qtype']]] += 5
+
+# 		for i in res['features']:
+# 			if(i in element['subject']):
+# 				self.hash[queryTypeMap[res['qtype']]] += 5
+# 			if(i in element['object']):
+# 				self.hash[queryTypeMap[res['qtype']]] += 3
+
+
+
+# 	def getDitaScore(self,features):
+# 		self.hash = {'step': 0,
+# 		              'definition': 0,
+# 		              'description': 0}
+
+# 		return self.queryscore(feature)
+
+
 class FeatureProcessor():
 	def __init__(self):
 		 self.totalHash = {'step': 0,
@@ -128,27 +137,22 @@ class FeatureProcessor():
 
 
 
-arr =[]
-c = rules()
-# d = StepsRule(c)
-# a = DescRule(c)
-# b = DefRule(c)
+def scoreadd():
+	arr =[]
+	c = rules()
 
-#arr =[d,a,b]
-#f = FeatureProcessor(c)
+#the rule objects
+	d = StepsRule()
+	a = DescRule()
+	b = DefRule()
 
-
-d = StepsRule()
-a = DescRule()
-b = DefRule()
-
-arr =[d,a,b]
-for elem in docu:
-	f = FeatureProcessor()
-	elem['scores'] = f.processRules(arr,elem)
+# the rule-obj array
+	arr =[d,a,b]
+	for elem in docu:
+		f = FeatureProcessor()
+		elem['scores'] = f.processRules(arr,elem)
 	
-
-output_data(docu)
-
+	output_data(docu)
 
 
+scoreadd()

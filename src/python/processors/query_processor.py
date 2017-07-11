@@ -89,4 +89,5 @@ else:
 res = {"pos_tags": pos_tags, "qtype": qtype, "features":features}
 
 if __name__ == '__main__':
+    #question = read_input()
     output_data(res)
