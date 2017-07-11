@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Reference//EN" "technicalContent/dtd/reference.dtd" [
+]>
+
+
+
+<reference id = "id_ftyVvDe4MY1O"
+    xmlns:ditaarch = "http://dita.oasis-open.org/architecture/2005/">
+<title>Landing</title>
+<shortdesc>Maximum airspeed for <i>lowering the gear</i> is 312
+KEAS, based on landing gear structural limits.</shortdesc>
+<refbody><section id = "i721341"><indexterm>landing speed</indexterm><p>Maximum
+speed <i>at landing</i> is based on the ground speed certified tire
+speed limit. The maximum predicted ground speed at touchdown should
+not exceed 214 knots.</p></section></refbody></reference>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<concept id="id_UbygS6GeeG9B">
+    <title>Thermal protection</title>
+    <shortdesc>Heat protection against burnup and cold protection against the void of space is
+        provided by materials applied to the outer skin of the vehicle to maintain acceptable
+        temperatures.</shortdesc>
+    <conbody>
+        <p><indexterm>thermal protection</indexterm>The outside of the vehicle is made of aluminum
+            and epoxy. Reentry temperatures can exceed 3000° F<fn>1650° C</fn>. Outside temperatures
+            can plummet to minus 250° F<fn>-155° C</fn>.</p>
+        <p>Materials are used in a preferred order and include:<ol>
+                <li><p>Reinforced carbon fiber.</p></li>
+                <li><p>High temperature reusable surface insulation.</p></li>
+                <li><p>Low temperature reusable surface insulation.</p></li>
+                <li><p>Specialized materials for other exposed internal surfaces.<ul>
+                            <li><p>Flexible surface insulation over standard shapes</p></li>
+                            <li><p>Insulating blankets strapped to non-standard shapes</p></li>
+                        </ul></p></li>
+            </ol></p>
+    </conbody>
+</concept>

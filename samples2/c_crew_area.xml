@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<concept id="id_X9QW7gYdgwSf">
+    <title>Crew area</title>
+    <shortdesc>The crew area has a side hatch normally used to enter or exit the vehicle. There is a
+        hatch to the above wing storage area. There are also shielded and protected
+        windows.</shortdesc>
+    <conbody>
+        <fig id="i724270">
+           <image href="../media/Cabin.png"></image>
+        </fig>
+        <p product="ProductA"><indexterm>crew area</indexterm>Seating for five is provided and a
+            full restraint system is built into each seat. All seats include personal audio and
+            video entertainment options. Seats also fully recline into a sleeping arrangement that
+            can lie flat at 180 degrees.</p>
+        <p product="ProductB">Seating for three is provided and a full restraint system is built
+            into each seat. The pilot seat includes personal audio options. Seats also recline up to
+            140° for sleeping.</p>
+        <?Fm Condend ProductB?>
+        <p>Each seat serves several functions, detailed in the following sections.</p>
+    </conbody>
+</concept>

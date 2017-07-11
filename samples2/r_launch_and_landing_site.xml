@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<reference id="id_NP5EfmZlugaw">
+    <title>Launch and landing site</title>
+    <shortdesc>Ensure the launch site meets minimum requirements.</shortdesc>
+    <refbody>
+        <section id="i724405"><indexterm>landing site</indexterm><indexterm>launch
+                    site</indexterm><indexterm>site<indexterm>launch</indexterm><indexterm>landing</indexterm></indexterm><ul>
+                <li><p>The launch site must meet physical dimension requirements:<ul>
+                            <li><p>at least 5 miles<fn>8km</fn> long;</p></li>
+                            <li><p>at least 3 miles<fn>5km</fn> wide.</p></li>
+                        </ul></p></li>
+                <li><p>Site statements must be completed and approved for:<ul>
+                            <li><p>environmental, and;</p></li>
+                            <li><p>safety.</p></li>
+                        </ul></p></li>
+                <li><p>Additional setup is specified in the companion document <i>Site
+                        Setup</i>.</p></li>
+            </ul></section>
+    </refbody>
+</reference>

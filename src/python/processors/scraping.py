@@ -7,14 +7,14 @@ import spacy
 from spacy.en import English
 from io_utils import output_data
 from file_utils import absolute_path
-from consts import SUBJECTS,OBJECTS
+from consts import SUBJECTS,OBJECTS,stopwords
 from subverb import findSVAOs
 
 nlp = spacy.load('en')                          
 parser = English()
 
 
-path = absolute_path('../../../samples')
+path = absolute_path('../../../samples2')
 
 def text_content(node):
     result=[]
@@ -23,6 +23,7 @@ def text_content(node):
         if text and text.strip():
             result.append(text)
     return result
+
 def xapthget(tree,node):
     return tree.getpath(node)
 
@@ -31,10 +32,10 @@ def scrape():
 
     for filename in os.listdir(path):
 
-        if not filename.endswith('.xml'):continue
-        fullname = os.path.join(path,filename)
-        tree = etree.parse(fullname)
-        root = tree.getroot()
+        if filename.endswith('.xml') or filename.endswith('.dita'):
+            fullname = os.path.join(path,filename)
+            tree = etree.parse(fullname)
+            root = tree.getroot()
 
         for child in root:
             if(child.tag == 'title'):
@@ -44,8 +45,6 @@ def scrape():
                     content = content.encode('ascii','ignore')
                     
                     pathx = xapthget(tree,child)
-                    
-                    
                     
                     newElement={}
                     newElement["filename"] = filename
@@ -60,18 +59,18 @@ def scrape():
     return(docmap)
 
 def linescrape(docmap):
-
+    #docmap = []
     for filename in os.listdir(path):
-        if not filename.endswith('.xml'):continue
-        fullname = os.path.join(path,filename)
-        tree = etree.parse(fullname)
-        root = tree.getroot()
+        if filename.endswith('.xml') or filename.endswith('.dita'):
+            fullname = os.path.join(path,filename)
+            tree = etree.parse(fullname)
+            root = tree.getroot()
 
         for child in root:
             if(child.tag == 'title'):
                 titel = ' '.join(text_content(child)).replace('\n','')
             for tag in child:
-                content = ' '.join(text_content(child)).replace('\n',' ')
+                content = ' '.join(text_content(tag)).replace('\n',' ')
                 content = content.encode('ascii','ignore')
                 content = content.decode('utf-8','ignore')
                 pathx = xapthget(tree,tag)
@@ -94,6 +93,7 @@ def linescrape(docmap):
 
                     docmap.append(newElement)
 
+    #return(docmap)
     #output_data(docmap)
 
 
@@ -120,8 +120,8 @@ def parse(doc):
             if ( subtree.label() == 'STP'):
                         elem['type']='STP'
                         
-            #else:
-                        #elem['type']='DES'
+            else:
+                        elem['type']='DES'
 
 
     #output_data(doc)
@@ -141,10 +141,11 @@ def subobjadder (doc):
             words = words.decode('utf-8','ignore')
             parsed = nlp(words)
             for word in parsed.noun_chunks:
-                if (word.root.dep_ in SUBJECTS): 
-                    sub.append(word.text)
-                if(word.root.dep_ in OBJECTS ):
-                    obj.append(word.text)
+                if(word.text not in stopwords):
+                    if (word.root.dep_ in SUBJECTS): 
+                        sub.append(word.text)
+                    if(word.root.dep_ in OBJECTS ):
+                        obj.append(word.text)
             elem['subject'] = sub
             elem['object'] = obj
     
@@ -190,8 +191,7 @@ def typedef (doc):
                                elem['object'] = j.text
 
 
-    output_data(doc)
-
+    #output_data(doc)
 
 
 
@@ -200,10 +200,13 @@ def typedef (doc):
 
 docu=scrape()
 linescrape(docu)
+parse(docu)
+#docu = linescrape()
 subobjadder(docu)
 #treevisual(docu)
-parse(docu)
+
 typedef(docu)
 
-
+if __name__ == '__main__':
+    output_data(docu)
 #clearparse(doc)

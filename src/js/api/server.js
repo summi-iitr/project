@@ -9,11 +9,12 @@ app.use(express.static('public'))
 
 app.get('/query', function (req, res) {
   let callback =  (text) =>{
-    //console.log(text)
+    console.log(text)
     res.setHeader('Content-Type', 'application/json');
     res.end(JSON.stringify(text));
   }
   let q_text = decodeURIComponent(req.query.q)
+  console.log(q_text)
   query_processor(q_text, callback)
 })
 app.get('/features', function (req, res) {
@@ -47,7 +48,7 @@ app.get('/solr/search', function (req, res) {
     callback(e)
   }
 })
-var server = app.listen(8082, "10.41.41.175", function () {
+var server = app.listen(8081, "127.0.0.1", function () {
   var host = server.address().address
   var port = server.address().port
 

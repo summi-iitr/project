@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE topic PUBLIC "-//OASIS//DTD DITA 1.3 Topic//EN" "technicalContent/dtd/topic.dtd" [
+
+<!-- Begin Document Specific Declarations -->
+<?Fm Validation Off?>
+
+
+<!-- End Document Specific Declarations -->
+
+]>
+
+<?Fm Condition DITA-Prolog AsIs NO_OVERRIDE show AsIs?>
+
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e21919862bd3526142db41d051-8000" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">
+<title class="- topic/title ">Adobe Experience Manager</title>
+<?Fm Condstart DITA-Prolog?>
+<prolog class="- topic/prolog ">
+<metadata>
+<keywords>
+<keyword>
+Adobe Experience Manager, CQ, collaboration of FrameMaker with AEM
+</keyword>
+</keywords>
+<othermeta name="description" content="Know what Adobe Experience Manager is and how you can collaborate with AEM in FrameMaker"/>
+</metadata>
+</prolog>
+<?Fm Condend DITA-Prolog?>
+<body class="- topic/body ">
+<p class="- topic/p ">
+Built atop the industry-leading JSR-283-compliant CRX content repository,
+<xref href="http://www.adobe.com/in/solutions/web-experience-management.html" scope="external">Adobe Experience Manager</xref>
+(AEM and formerly CQ) provides a complete suite of applications for the Web Experience Management (WEM) of organizations. FrameMaker ships with an out-of-the-box connector to AEM. FrameMaker also provides you with an easy-to-use interface that allows you to maintain versions of your documents in a distributed and collaborative environment.
+</p>
+</body>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e21919834d1409a142dc43e4c9-8000" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">...</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="id1667C0TE02N">...</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e2191982c21739f142dc620eaf-8000" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">...</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e219198-1ec64c1d142dcc2d293-7fff" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">...</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e219198-28d99374142e054e045-7fff" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">
+<title class="- topic/title ">Searching in the AEM repository</title>
+<?Fm Condstart DITA-Prolog?>
+<prolog class="- topic/prolog ">
+<metadata>
+<keywords>
+<keyword>
+AEM repository search, advanced search, Repository search pod, CMS Search
+</keyword>
+</keywords>
+<othermeta name="description" content="Understand how you can perform intuitive search in the AEM repository"/>
+</metadata>
+</prolog>
+<?Fm Condend DITA-Prolog?>
+<body class="- topic/body ">
+<p>
+The AEM search functionality allows you to search for files in the selected AEM folder. The functionality includes:
+</p>
+<p>
+<ul>
+<li>
+<p>
+<xref outputclass="fm:" href="#WS2d2a17056e219198-28d99374142e054e045-7ffe">Repository search</xref>
+</p>
+</li>
+<li>
+<p>
+<xref outputclass="fm:" href="#id166UG06D0CZ">Attribute search</xref>
+</p>
+</li>
+<li>
+<p>
+<xref outputclass="fm:" href="#WS2d2a17056e219198-28d99374142e054e045-7ffd">Advanced search</xref>
+</p>
+</li>
+</ul>
+</p>
+</body>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e219198-28d99374142e054e045-7ffe" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">
+<title class="- topic/title ">Repository search</title>
+<body class="- topic/body ">
+<p class="- topic/p ">
+<codeph/>
+To search for a file in the repository:
+</p>
+<ol class="- topic/ol ">
+<li class="- topic/li ">
+<p class="- topic/p ">Select a folder in which to search.</p>
+</li>
+<li>
+<p>
+Enter the search string in the Enter Search String text box in the Repository Manager.
+</p>
+<image href="images/repo-manager-search.png" align="left" scale="60.00"/>
+</li>
+<li>
+<p>Click the Search Repository icon.</p>
+<p>
+Based on the way your AEM server is setup, the search results are displayed in either of the two formats:
+</p>
+<ul>
+<li>
+<p>
+<b>Search Results dialog</b>
+</p>
+<p>
+The Search Result dialog appears if your AEM server
+<i>does not</i>
+have the XML Documentation Add-on for Adobe Experience Manager installed.
+</p>
+<p>
+The Search Result dialog displays the filename, server path, version, and date created for each file returned in the search results.
+</p>
+<image href="images/search-result-dialog.png" align="left" scale="60.00"/>
+</li>
+<li>
+<p>
+<b>Repository Search pod</b>
+</p>
+<p>
+The Repository Search pod appears if your AEM server has the XML Documentation Add-on for Adobe Experience Manager installed.
+</p>
+<p>
+The Repository Search pod displays the filename, context where the search term is found, element hierarchy, author, review status, and places where the corresponding file is used.
+</p>
+<image href="images/Repository%20Search%20pod2.png" align="left" scale="60.00"/>
+</li>
+</ul>
+</li>
+<li>
+<p>
+In the search results, right-click on a file to perform the required operation on the file. For operations that you can perform on a file, see
+<xref outputclass="fm:" href="#WS2d2a17056e219198-1ec64c1d142dcc2d293-7fff">Working with files</xref>
+.
+</p>
+</li>
+</ol>
+</body>
+</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="id166UG06D0CZ">
+<title>Attribute search</title>
+<body>
+<p>
+The AEM search functionality also supports search by an element’s attribute. To search by attribute, type the search string as
+<codeph>Attribute name = Value</codeph>
+and click the search icon. The search results are displayed in the Repository Search pod.
+</p>
+<p>
+For example, if you want to search for an image that has the width of 200, then specify the search string as:
+<codeph>width=200</codeph>
+</p>
+</body>
+</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e219198-28d99374142e054e045-7ffd" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">
+<title class="- topic/title ">Advanced search</title>
+<?Fm Condstart DITA-Prolog?>
+<prolog class="- topic/prolog ">
+<metadata>
+<keywords>
+<keyword>Advanced Search, Perform Advanced Search</keyword>
+</keywords>
+<othermeta name="description" content="Understand Advanced Search in FrameMaker and learn how to perform advanced search"/>
+</metadata>
+</prolog>
+<?Fm Condend DITA-Prolog?>
+<body class="- topic/body ">
+<p class="- topic/p ">
+Advanced search allow users to perform a search based on criteria like name, path, modified date, file type, and tags. Such functionality is useful when you have a large number and variety of files in your repository.
+</p>
+<note>
+<p>
+Advanced Search is disabled when you have the XML Documentation Add-on for AEM installed on your AEM server.
+</p>
+</note>
+<p>
+To perform an advanced search for files in the AEM repository:
+</p>
+<ol class="- topic/ol ">
+<li class="- topic/li ">
+<p class="- topic/p ">
+Click the Advanced Search button on the Repository Manager.
+</p>
+<fig frame="all" otherprops="approved" class="- topic/fig ">
+<desc class="- topic/desc ">AEM Advanced Search dialog</desc>
+<image href="images/cn_advance_search_dlg.png" align="left" placement="break" scale="60.00" class="- topic/image "/>
+</fig>
+<note type="important" class="- topic/note ">
+None of the search fields in the Advanced Search dialog are mandatory. Also, if you specify a search filter for more than one field, the search uses the
+<b class="+ topic/ph hi-d/b ">AND</b>
+criteria to perform the search.
+</note>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">In the Full Text box, enter the search string.</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+The Path box displays the name of the currently selected folder. Use the Browse button to choose an alternative AEM folder to search.
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+Click the Modified check box to enable the From and To fields.
+</p>
+<p class="- topic/p ">
+Use the Calendar controls in these fields to specify the file modified date range to search.
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+Click the File Types check box to enable the file type fields.
+</p>
+<p class="- topic/p ">
+You can choose to include (check) or exclude (uncheck) the file type from the search.
+</p>
+<ul class="- topic/ul ">
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">FrameMaker Files</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Images</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Multimedia</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Documents</b>
+</p>
+</li>
+</ul>
+<p class="- topic/p ">
+For each of the above file type groups, click the Browser button and choose the file types to include or exclude. For example, from the FrameMaker Files list, you can choose to include or exclude FrameMaker Documents, FrameMaker MIF, and XML.
+</p>
+<p class="- topic/p ">
+You can also enter a file type not defined above in the
+<userinput class="+ topic/ph sw-d/userinput ">Other Types</userinput>
+box.
+</p>
+<p class="- topic/p ">
+To define other files type, you will need to specify the mime type of the file. Also, you can specify multiple file types separated by comma.
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+Click the Tags check box to enable the metatag fields.
+</p>
+<p class="- topic/p ">
+You can choose to include (check) or exclude (uncheck) the metatag from the search.
+</p>
+<ul class="- topic/ul ">
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Business</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Industry</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Lifestyle</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Nature</b>
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">Illustrations/Vectors</b>
+</p>
+</li>
+</ul>
+<p class="- topic/p ">
+For each of the above metatag groups, click the Browser button and choose the metatag to include or exclude. For example, from the Business tag group, you can choose to include or exclude business-related metatags such as Business Abstract, Business Backgrounds, Business Concept.
+</p>
+<p class="- topic/p ">
+You can also enter a metatag not defined above in the
+<userinput class="+ topic/ph sw-d/userinput ">Other Tags</userinput>
+box.
+</p>
+<p class="- topic/p ">
+To define multiple metatags, you can specify the metatags separated by comma.
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+After you have filtered the search, click the Search button.
+</p>
+<p class="- topic/p ">
+The Search Result dialog displays the file name, server path, version, and date created for each file returned in the search results.
+</p>
+</li>
+<li class="- topic/li ">
+<p class="- topic/p ">
+Right-click a file to perform the required operation on the file. For operations that you can perform on a file see,
+<xref outputclass="fm:" href="#WS2d2a17056e219198-1ec64c1d142dcc2d293-7fff">Working with files</xref>
+.
+</p>
+</li>
+</ol>
+</body>
+</topic>
+</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="id1667EG00JYE">
+<title>Review</title>
+<?Fm Condstart DITA-Prolog?>
+<prolog class="- topic/prolog ">
+<metadata>
+<keywords>
+<keyword>
+Work with review comments, Understand document review
+</keyword>
+</keywords>
+<othermeta name="description" content="Know how you can perform review and work with review comments in FrameMaker"/>
+</metadata>
+</prolog>
+<?Fm Condend DITA-Prolog?>
+<body>
+<p>
+The review functionality allows you to sync, view and reply to comments received from reviewers. For this functionality to work, you must have the XML Documentation Add-on for AEM installed on your AEM server.
+</p>
+<p>
+Using the review feature provided in the XML Documentation Add-on for AEM, an author can initiate a document review from AEM. Multiple reviewers can review a single topic and share their comments. The comments can then be viewed and managed from the Review Comments pod in FrameMaker.
+</p>
+<note>
+<p>
+You cannot initiate a review task from FrameMaker, but you can post comments on the topics. They are reflected in AEM when you sync the same topic in AEM.
+</p>
+</note>
+<image href="images/Review%20Comments%20pod.PNG" align="left" scale="60.00"/>
+<p>From the Review Comments pod, you can:</p>
+<p>
+<b>A</b>
+: Filter comments by choosing reviewers from Reviewers list. See all comments by clicking on Show All Comments.
+</p>
+<p>
+<b>B</b>
+: Mark the status for each comment. Choose from None, Accepted or Rejected.
+</p>
+<p>
+<b>C</b>
+: Post a reply for a comment.
+</p>
+<p>
+To access the Review Comments pod and manage comments, perform the following steps:
+</p>
+<ol>
+<li>
+<p>
+Open the topic for which you want to view the comments.
+</p>
+</li>
+<li>
+<p>
+Click Review Comments icon to open the Review Comments pod from the Repository Manager window.
+</p>
+</li>
+<li>
+<p>In the Review Comments pod, click Sync Comments.</p>
+<p>
+You can see a list of comments for the currently open topic.
+</p>
+</li>
+<li>
+<p>
+Manage your comments by either posting a reply, or changing the status of the comment.
+</p>
+</li>
+</ol>
+</body>
+</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e219198-ca9fd7e142e081aa97-8000" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">
+<title class="- topic/title ">Associate XMP Metadata</title>
+<?Fm Condstart DITA-Prolog?>
+<prolog class="- topic/prolog ">
+<metadata>
+<keywords>
+<keyword>Associate XMP Metadata</keyword>
+</keywords>
+<othermeta name="description" content="See how you can work with associate XMP Metadata in FrameMaker"/>
+</metadata>
+</prolog>
+<?Fm Condend DITA-Prolog?>
+<body class="- topic/body ">
+<p class="- topic/p ">
+FrameMaker provides you support for editing and updating AEM metadata of DAM FrameMaker assets, which simplifies file and version management. XMP metadata is platform independent and you can customize it to meet your CMS needs. For more information about XMP metadata, see
+<xref href="http://www.adobe.com/products/xmp/index.html" scope="external">ExtensibleMetadataPlatform(XMP)</xref>
+.
+</p>
+<p class="- topic/p ">
+Both FrameMaker and AEM support XMP. When you upload a FrameMaker binary file (.fm, .mif, or .book) to the AEM repository using DAM, the FrameMaker file information (File > File Info) is added to the AEM metadata of the file.
+</p>
+<p class="- topic/p ">
+If you right-click and choose Show Metadata on a file in the AEM repository, you can view the XMP metadata associated with the file.
+</p>
+</body>
+</topic>
+<topic xmlns:ditaarch="http://dita.oasis-open.org/architecture/2005/" id="WS2d2a17056e21919817b1aa78142e08fa6f7-8000" ditaarch:DITAArchVersion="1.2" domains="(topic hi-d) (topic ut-d) (topic indexing-d) (topic hazard-d) (topic abbrev-d) (topic pr-d) (topic sw-d) (topic ui-d) " class="- topic/topic ">
+<title class="- topic/title ">Manage AEM preferences</title>
+<?Fm Condstart DITA-Prolog?>
+<prolog class="- topic/prolog ">
+<metadata>
+<keywords>
+<keyword>Manage AEM preferences, CQPreference.xml</keyword>
+</keywords>
+<othermeta name="description" content="Know how you can manage the FrameMaker AEM connector preferences using the CQPreference.xml"/>
+</metadata>
+</prolog>
+<?Fm Condend DITA-Prolog?>
+<body class="- topic/body ">
+<p class="- topic/p ">
+You can manage the FrameMaker AEM connector preferences using the CQPreference.xml (located in the FrameMaker install directory).
+</p>
+<p class="- topic/p ">
+To update the preferences, open the XML file in an XML or text editor and make change to the following properties, as needed:
+</p>
+<table frame="all" colsep="1" rowsep="1" class="- topic/table ">
+<tgroup cols="3" colsep="1" rowsep="1" outputclass="Table.format" class="- topic/tgroup ">
+<colspec colnum="1" colname="1" colwidth="23*"/>
+<colspec colnum="2" colname="2" colwidth="38*"/>
+<colspec colnum="3" colname="3" colwidth="38*"/>
+<thead class="- topic/thead ">
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">Preference</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">Values</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">Default</p>
+</entry>
+</row>
+</thead>
+<tbody class="- topic/tbody ">
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">ShowOnlyDam</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+displays only the DAM related folders\assets for which you have read permissions in Repository Manager.
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">false</b>
+displays all the folders in Repository Manager.
+</p>
+<p class="- topic/p ">
+For example, if this field is set to true, and folders is set to "content,apps" FrameMaker displays only two folders in the content repository: content and apps. If this field is set to true and folders is set to “content/dam” the content repository displays content as top level folder and dam as a sub-folder.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">true</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">SetUserArea folders</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+Specify the AEM application folder where all the FrameMaker files are downloaded from AEM to the local disk.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">
+This field is blank by default. When you do not edit this field and keep it blank, the default folder is: %APPDATA%\ Adobe\Frame Maker\CQ
+</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">SuppressAlert</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+suppresses the alert messages, such as missing dependent file alerts while uploading/checkin/checkout files, and displays the message content in the FM console window file.
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">false</b>
+does not suppress the alert messages.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">false</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">FileNameRestrictions</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">
+<b class="+ topic/ph hi-d/b ">anychar="true"</b>
+</b>
+allows all the characters and special characters in the filenames in the repository.
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">
+<b class="+ topic/ph hi-d/b ">anychar="false"</b>
+</b>
+lets you specify the allowed characters in the repository filenames using AlphaNumeric and OtherCharsSpecialChars values.
+</p>
+<p class="- topic/p ">
+<note class="- topic/note ">
+By default, Unicode is not supported in filenames. To enable Unicode characters in new folder and filenames, switch off the restrictions. (set FileNameRe- strictions anychar = true).
+</note>
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">false</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">AlphaNumeric</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+allows alphanumeric characters in filenames.
+</p>
+<p class="- topic/p ">
+This preference is relevant only when FileNameRestrictions anychar is set to false.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">true</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">SpecialChars values</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+List the other characters that are allowed. For example, to allow “-” and “:” in the repository filenames set the value if this field to: “-:”.
+</p>
+<p class="- topic/p ">
+This preference is relevant only when FileNameRestrictions anychar is set to false.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">none</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">ShowProgressBar value</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+shows a progress bar for indicating the progress of operations, such as check in, check out, download.
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">false</b>
+does not display the progress bar.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">false</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">AddHiddenDependencies value</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+uploads dependencies, such as cross-references, text inset, graphics, hidden through conditional text or filter attribute while uploading a file.
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">false</b>
+ignores all hidden dependencies while uploading a file
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">false</p>
+</entry>
+</row>
+<row rowsep="1" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">ManageReferences value</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+allows you to customize reference handling with menu and UI options
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">false</b>
+maintains existing behavior
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">true</p>
+</entry>
+</row>
+<row rowsep="0" class="- topic/row ">
+<entry colname="1" class="- topic/entry ">
+<p class="- topic/p ">AutoRefreshParent value</p>
+</entry>
+<entry colname="2" class="- topic/entry ">
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">true</b>
+refreshes the parent node (file or folder) in the Repository Manager after each operation, such as check out.
+</p>
+<p class="- topic/p ">
+<b class="+ topic/ph hi-d/b ">false</b>
+does not refresh the parent node automatically.
+</p>
+<p class="- topic/p ">
+Set it to false, if better performance is required.
+</p>
+</entry>
+<entry colname="3" class="- topic/entry ">
+<p class="- topic/p ">true</p>
+</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<p class="- topic/p ">
+To effect these changes, you need to restart CMS session.
+</p>
+</body>
+</topic>
+</topic>

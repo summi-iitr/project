@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE task PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<task id="id_R9Psr47YYnEO">
+    <title>Recline the seats</title>
+    <shortdesc>Converting the seats to a reclined sleeping position can be done at the push of a
+        button.</shortdesc>
+    <taskbody>
+        <steps>
+            <step>
+                <cmd><indexterm>seat recline</indexterm>Launch your personal Primary Control
+                    dialog.</cmd>
+            </step>
+            <step>
+                <cmd>Select <uicontrol>Seat Configuration</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Layout</uicontrol>.</cmd>
+            </step>
+            <step>
+                <cmd>Tap <uicontrol>Recline to Lie Flat Bed</uicontrol>.</cmd>
+            </step>
+        </steps>
+        <?Fm Condstart ProductA?>
+        <?Fm Condstart ProductB?>
+        <result><?Fm Condend ProductB?><p product="ProductA">The seat slowly reclines to a fully
+                flat bed.</p><?Fm Condend ProductA?><?Fm Condstart ProductB?><p product="ProductB"
+                >The seat reclines slowly to a comfortable sleeping
+            angle.</p><?Fm Condstart ProductA?></result>
+        <?Fm Condend ProductA?>
+        <?Fm Condend ProductB?>
+        <postreq><p>Adjust the lighting for your personal pod area based on the desired brightness
+                when resting.</p></postreq>
+    </taskbody>
+</task>

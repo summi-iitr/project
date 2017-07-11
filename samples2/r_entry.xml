@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE reference PUBLIC "-//OASIS//DTD DITA Composite//EN" "technicalContent/dtd/ditabase.dtd">
+<reference id="id_9PW3efu4wbeO">
+    <title>Entry</title>
+    <shortdesc>The maximum airspeed during entry is also a function of q-bar, which varies during
+        descent.</shortdesc>
+    <refbody>
+        <section id="i721330"><note type="caution"><p>If the maximum speed is exceeded, the vehicle
+                    may become unstable in roll/yaw. The maximum airspeed limit is 486
+                KEAS.</p></note><p>The minimum airspeed for Mach less than 5.0 is 163
+            KEAS.</p></section>
+    </refbody>
+</reference>
