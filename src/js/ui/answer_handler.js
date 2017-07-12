@@ -8,19 +8,34 @@ const queryTypeMap = {
 }
 
 
+let answerProcessor = (docs, type) =>{
+  let newDocs = []
+  $.each(docs, (index, doc) =>{
+    doc.scores = JSON.parse(doc.scores)
+    newDocs.push(doc)
+  })
+  let compareFn = (doc1, doc2) => {
+    if(doc1.scores && doc2.scores && doc1.scores[type] !== undefined && doc2.scores[type] !== undefined)
+    return doc1.scores[type] - doc2.scores[type]
+  }
+  newDocs.sort(compareFn)
+  return newDocs
+}
 
 
-let onSolrQueryResult = (res) =>{
+let onSolrQueryResult = (res, type) =>{
   if(res && res.numFound >0){
     //let docs = res.docs.splice(0, 5)
-    let top_docs = res.docs.splice(0, 5)
+
+    let top_docs = answerProcessor(res.docs, type)
+    top_docs = top_docs.splice(0, 5)
     let answerHtml = ui_utils.getListHtml(top_docs)
-  
+
   /*function setscore(docs,q_text,q_type){
   var score=0;
   var text = ""
   $.each(docs, (index,doc) =>{
-    var title = doc.title 
+    var title = doc.title
     //console.log("nothing recieved")
     if (typeof(title) === 'string' && typeof(q_text) === 'string' && title === q_text)
       score+=50;
@@ -65,15 +80,19 @@ let onQueryResult = (res) =>{
 
     //onSolrQueryResult(q_text,q_type)
   }
+  let successFn = (res) =>{
+    onSolrQueryResult(res, query_param.type)
+  }
 
   $.ajax({
     type: 'get',
     url: "solr/search",
     data: query_string,
-    success: onSolrQueryResult
+    success: successFn
   });
 
 }
+
 
 module.exports= () =>{
   let q_text = $('#q_text').val()

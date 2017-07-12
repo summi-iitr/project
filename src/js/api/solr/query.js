@@ -4,7 +4,7 @@ let client = solr.createClient({core:"/gettingstarted"});
 module.exports = (query_text, type, callback) =>{
   let query
   if(type !== 'undefined'){
-    query = `title:(${query_text})^4 OR subject:${query_text}`
+    query = `title:(${query_text})^4 OR subject:${query_text} OR object: ${query_text}`
   }
   else{
     query = `text:${query_text}`
