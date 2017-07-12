@@ -4,12 +4,17 @@ let client = solr.createClient({core:"/gettingstarted"});
 module.exports = (query_text, type, callback) =>{
   let query
   if(type !== 'undefined'){
-    query = `title:(${query_text})^4 OR subject:${query_text} OR object: ${query_text}`
+    let para = ''
+    if(type === 'STP'){
+      para = ' AND para:true'
+    }
+
+    query = `title:(${query_text})^4 OR subject:${query_text} OR object: ${query_text} ${para}`
   }
   else{
     query = `text:${query_text}`
   }
-  client.query(query, {fq:`type=${type}`}, function(err, response) {
+  client.query(query, {}, function(err, response) {
     if (err){
       console.error(err);
       callback([])
