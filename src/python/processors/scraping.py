@@ -14,7 +14,7 @@ nlp = spacy.load('en')
 parser = English()
 
 
-path = absolute_path('../../../samples2')
+path = absolute_path('../../../samples1')
 
 def text_content(node):
     result=[]
@@ -32,68 +32,68 @@ def scrape():
 
     for filename in os.listdir(path):
 
-        if filename.endswith('.xml') or filename.endswith('.dita'):
+        if filename.endswith('.xml') or filename.endswith('.dita') :
             fullname = os.path.join(path,filename)
             tree = etree.parse(fullname)
             root = tree.getroot()
 
-        for child in root:
-            if(child.tag == 'title'):
-                titel = ' '.join(text_content(child)).replace('\n','')
-            if(child.tag != 'title'):
-                    content = ' '.join(text_content(child)).replace('\n',' ')
-                    content = content.encode('ascii','ignore')
-                    
-                    pathx = xapthget(tree,child)
-                    
-                    newElement={}
-                    newElement["filename"] = filename
-                    newElement['title']=titel
-                    newElement["text"]=content
-                    newElement["para"] = 'True'
-                    newElement['xpath'] = pathx
+            for child in root:
+                if(child.tag == 'title'):
+                    titel = ' '.join(text_content(child)).replace('\n','')
+                if(child.tag != 'title'):
+                        content = ' '.join(text_content(child)).replace('\n',' ')
+                        content = content.encode('ascii','ignore')
+                        
+                        pathx = xapthget(tree,child)
+                        
+                        newElement={}
+                        newElement["filename"] = filename
+                        newElement['title']=titel
+                        newElement["text"]=content
+                        newElement["para"] = 'True'
+                        newElement['xpath'] = pathx
 
-                    docmap.append(newElement)
+                        docmap.append(newElement)
 
 
     return(docmap)
 
-def linescrape(docmap):
-    #docmap = []
+def linescrape():
+    docmap = []
     for filename in os.listdir(path):
         if filename.endswith('.xml') or filename.endswith('.dita'):
             fullname = os.path.join(path,filename)
             tree = etree.parse(fullname)
             root = tree.getroot()
 
-        for child in root:
-            if(child.tag == 'title'):
-                titel = ' '.join(text_content(child)).replace('\n','')
-            for tag in child:
-                content = ' '.join(text_content(tag)).replace('\n',' ')
-                content = content.encode('ascii','ignore')
-                content = content.decode('utf-8','ignore')
-                pathx = xapthget(tree,tag)
-                doc = nlp(content)
-                senlist = doc.sents
-                for sent in senlist:
-                    newElement={}
-                    newElement["filename"] = filename
-                    newElement['title']=titel
-                    newElement["text"]=sent.text
-                    newElement["para"] = 'False'
-                    newElement['xpath'] = pathx
-                    svotrips = findSVAOs(sent)
-                    a = []
-                    for elem in svotrips:
-                        strns = ' '.join(elem)
-                        a.append(strns)
+            for child in root:
+                if(child.tag == 'title'):
+                    titel = ' '.join(text_content(child)).replace('\n','')
+                for tag in child:
+                    content = ' '.join(text_content(tag)).replace('\n',' ')
+                    content = content.encode('ascii','ignore')
+                    content = content.decode('utf-8','ignore')
+                    pathx = xapthget(tree,tag)
+                    doc = nlp(content)
+                    senlist = doc.sents
+                    for sent in senlist:
+                        newElement={}
+                        newElement["filename"] = filename
+                        newElement['title']=titel
+                        newElement["text"]=sent.text
+                        newElement["para"] = 'False'
+                        newElement['xpath'] = pathx
+                        svotrips = findSVAOs(sent)
+                        a = []
+                        for elem in svotrips:
+                            strns = ' '.join(elem)
+                            a.append(strns)
 
-                    newElement['SVO'] = a
+                        newElement['SVO'] = a
 
-                    docmap.append(newElement)
+                        docmap.append(newElement)
 
-    #return(docmap)
+    return(docmap)
     #output_data(docmap)
 
 
@@ -198,8 +198,9 @@ def typedef (doc):
 
 
 
-docu=scrape()
-linescrape(docu)
+#docu=scrape()
+docu = linescrape()
+#linescrape(docu)
 parse(docu)
 #docu = linescrape()
 subobjadder(docu)
