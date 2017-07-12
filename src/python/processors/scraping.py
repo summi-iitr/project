@@ -9,8 +9,9 @@ from io_utils import output_data
 from file_utils import absolute_path
 from consts import SUBJECTS,OBJECTS,stopwords
 from subverb import findSVAOs
+from stepsProcessor import StepsProcessor
 
-nlp = spacy.load('en')                          
+nlp = spacy.load('en')
 parser = English()
 
 
@@ -48,13 +49,18 @@ def scrape():
                             continue
 
                         content = content.encode('ascii','ignore')
-                        
+
                         pathx = xapthget(tree,child)
-                        
+
                         newElement={}
                         newElement["filename"] = filename
                         newElement['title']=titel
+                        # if steps
+                        stepsProcessor = StepsProcessor(child)
+                        newElement["text"]=stepsProcessor.getStepsHTML()
+                        #else
                         newElement["text"]=content
+
                         newElement["para"] = 'True'
                         newElement['xpath'] = pathx
 
@@ -104,7 +110,7 @@ def linescrape(docmap):
 
 def parse(doc):
     grammar= r"""
-        
+
         STP:{<VB.*><PRP.*>}
         STP:{<VB.*><DT>?<NN>}
         STP:{<VB.*><DT>?<JJ.*>*<NN.*>}
@@ -124,7 +130,7 @@ def parse(doc):
         for subtree in result.subtrees():
             if ( subtree.label() == 'STP'):
                         elem['type']='STP'
-                        
+
             else:
                         elem['type']='DES'
 
@@ -135,7 +141,7 @@ def parse(doc):
 
 
     #output_data (doc)
- 
+
 def subobjadder (doc):
 
     for elem in doc:
@@ -147,13 +153,13 @@ def subobjadder (doc):
             parsed = nlp(words)
             for word in parsed.noun_chunks:
                 if(word.text not in stopwords):
-                    if (word.root.dep_ in SUBJECTS): 
+                    if (word.root.dep_ in SUBJECTS):
                         sub.append(word.text)
                     if(word.root.dep_ in OBJECTS ):
                         obj.append(word.text)
             elem['subject'] = sub
             elem['object'] = obj
-    
+
     #output_data(doc)
 
 
