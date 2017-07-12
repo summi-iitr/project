@@ -1,9 +1,9 @@
 from scraping import docu
 from query_processor import res
 from io_utils import output_data
-const queryTypeMap = {
+queryTypeMap = {
   "DEF":"definition",
-  "STP":"step"
+  "STP":"step",
   "DES":"description"
 }
 stepindi = ['steps','substeps','cmd']
@@ -150,8 +150,8 @@ def scoreadd():
 	arr =[d,a,b]
 	for elem in docu:
 		f = FeatureProcessor()
-		elem['scores'] = f.processRules(arr,elem)
-	
+		totalScore = f.processRules(arr,elem)
+        elem['scores']= json.dumps(totalScore)
 	output_data(docu)
 
 
