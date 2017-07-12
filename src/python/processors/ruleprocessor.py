@@ -2,19 +2,15 @@ from scraping import docu
 #from query_processor import res
 from io_utils import output_data
 import json
-queryTypeMap = {
-  "DEF":"definition",
-  "STP":"step",
-  "DES":"description"
-}
+
 stepindi = ['steps','substeps','cmd','results']
 defindi = ['conbody','shortdesc','body','context']
 
 class rules:
     def __init__(self):
-        self.inhash = {'step': 0,
-                       'definition': 0,
-                       'description': 0}
+        self.inhash = {'STP': 0,
+                       'DEF': 0,
+                       'DES': 0}
 
     def getDitaScore(self,feature):
         return {}
@@ -28,39 +24,39 @@ class StepsRule(rules):
         words = element['xpath'].split('/')
         restype = element['type']
         if( words[-1] in stepindi ) :
-            self.hash['step'] += 10
+            self.hash['STP'] += 10
         if( restype == 'STP' ) :
-            self.hash['step'] += 20
+            self.hash['STP'] += 20
 
         return self.hash
 
     def getDitaScore(self,feature):
-        self.hash = {'step': 0,
-                       'definition': 0,
-                       'description': 0}
+        self.hash = {'STP': 0,
+                       'DEF': 0,
+                       'DES': 0}
         return self.checkstep(feature)
 
 
 class DefRule(rules):
     #def __init__(self,class_r):
         #self.hash = class_r.inhash
-   
+
     def checkdef(self,element):
         #self.hash = class_r.inhash
 
         words = element['xpath'].split('/')
         restype = element['type']
         if( words[-1] in defindi ) :
-            self.hash['definition'] += 10
+            self.hash['DEF'] += 10
         if( restype == 'DEF' ) :
-            self.hash['definition'] += 20
+            self.hash['DEF'] += 20
 
         return self.hash
 
     def getDitaScore(self,feature):
-        self.hash = {'step': 0,
-                       'definition': 0,
-                       'description': 0}
+        self.hash = {'STP': 0,
+                       'DEF': 0,
+                       'DES': 0}
         return self.checkdef(feature)
 
 
@@ -74,16 +70,16 @@ class DescRule(rules):
         words = element['xpath'].split('/')
         restype = element['type']
         if( words[-1] in defindi ) :
-            self.hash['description'] += 10
+            self.hash['DES'] += 10
         if( restype == 'DES' ) :
-            self.hash['description'] += 20
+            self.hash['DES'] += 20
 
         return self.hash
 
     def getDitaScore(self,feature):
-        self.hash = {'step': 0,
-                       'definition': 0,
-                       'description': 0}
+        self.hash = {'STP': 0,
+                       'DEF': 0,
+                       'DES': 0}
         return self.checkdesc(feature)
 
 
@@ -112,15 +108,14 @@ class DescRule(rules):
 
 class FeatureProcessor():
     def __init__(self):
-         self.totalHash = {'step': 0,
-                           'definition': 0,
-                           'description': 0}
-        #self.rulelist = rularr 
+         self.totalHash = {'STP': 0,
+                           'DEF': 0,
+                           'DES': 0}
+        #self.rulelist = rularr
 
     def hashadd(self,a,b):
-        a['step'] = a['step'] + b['step']
-        a['definition'] = a['definition'] + b['definition']
-        a['description'] = a['description'] + b['description']
+        for key, value in a.iteritems():
+            a[key] = a[key] + b[key]
 
         return a
 
@@ -157,7 +152,7 @@ def scoreadd():
         #print len(docu)
         #print "I am here"
         elem['scores']=    json.dumps(totalScore)
-        
+
         #print docu
     output_data(docu)
 
