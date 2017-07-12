@@ -12,11 +12,19 @@ let answerProcessor = (docs, type) =>{
   let newDocs = []
   $.each(docs, (index, doc) =>{
     doc.scores = JSON.parse(doc.scores)
+    doc.index = index
     newDocs.push(doc)
   })
   let compareFn = (doc1, doc2) => {
-    if(doc1.scores && doc2.scores && doc1.scores[type] !== undefined && doc2.scores[type] !== undefined)
-    return doc1.scores[type] - doc2.scores[type]
+    if(doc1.scores && doc2.scores && doc1.scores[type] !== undefined && doc2.scores[type] !== undefined){
+      if(doc1.scores[type] !== doc2.scores[type]){
+        return doc1.scores[type] - doc2.scores[type]
+      }
+      else{
+        return doc1.index - doc2.index
+      }
+    }
+    return 0
   }
   newDocs.sort(compareFn)
   return newDocs
