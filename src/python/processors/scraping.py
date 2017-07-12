@@ -16,13 +16,15 @@ parser = English()
 
 path = absolute_path('../../../samples1')
 
-def text_content(node):
-    result=[]
-    for elem in node.getiterator():
-        text=elem.text
-        if text and text.strip():
-            result.append(text)
-    return result
+def textify(node):
+    s=[]
+    if node.text:
+        s.append(node.text)
+    for child in node.getchildren():
+        s.extend(textify(child))
+    if node.tail:
+        s.append(node.tail)
+    return s
 
 def xapthget(tree,node):
     return tree.getpath(node)
@@ -39,9 +41,12 @@ def scrape():
 
             for child in root:
                 if(child.tag == 'title'):
-                    titel = ' '.join(text_content(child)).replace('\n','')
+                    titel = ' '.join(textify(child)).replace('\n','')
                 if(child.tag != 'title'):
-                        content = ' '.join(text_content(child)).replace('\n',' ')
+                        content = ' '.join(textify(child)).replace('\n',' ').strip()
+                        if(len(content) == 0):
+                            continue
+
                         content = content.encode('ascii','ignore')
                         
                         pathx = xapthget(tree,child)
@@ -58,8 +63,8 @@ def scrape():
 
     return(docmap)
 
-def linescrape():
-    docmap = []
+def linescrape(docmap):
+    #docmap = []
     for filename in os.listdir(path):
         if filename.endswith('.xml') or filename.endswith('.dita'):
             fullname = os.path.join(path,filename)
@@ -68,9 +73,9 @@ def linescrape():
 
             for child in root:
                 if(child.tag == 'title'):
-                    titel = ' '.join(text_content(child)).replace('\n','')
+                    titel = ' '.join(textify(child)).replace('\n','')
                 for tag in child:
-                    content = ' '.join(text_content(tag)).replace('\n',' ')
+                    content = ' '.join(textify(tag)).replace('\n',' ')
                     content = content.encode('ascii','ignore')
                     content = content.decode('utf-8','ignore')
                     pathx = xapthget(tree,tag)
@@ -93,7 +98,7 @@ def linescrape():
 
                         docmap.append(newElement)
 
-    return(docmap)
+    #return(docmap)
     #output_data(docmap)
 
 
@@ -198,8 +203,8 @@ def typedef (doc):
 
 
 
-#docu=scrape()
-docu = linescrape()
+docu=scrape()
+linescrape(docu)
 #linescrape(docu)
 parse(docu)
 #docu = linescrape()
