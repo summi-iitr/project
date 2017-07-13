@@ -37,7 +37,7 @@ let onSolrQueryResult = (res, type) =>{
 
     let top_docs = answerProcessor(res.docs, type)
     top_docs = top_docs.splice(0, 5)
-    let answerHtml = ui_utils.getListHtml(top_docs)
+    let answerHtml = ui_utils.getTableHtml(top_docs, type)
 
   /*function setscore(docs,q_text,q_type){
   var score=0;
