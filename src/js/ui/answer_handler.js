@@ -18,7 +18,7 @@ let answerProcessor = (docs, type) =>{
   let compareFn = (doc1, doc2) => {
     if(doc1.scores && doc2.scores && doc1.scores[type] !== undefined && doc2.scores[type] !== undefined){
       if(doc1.scores[type] !== doc2.scores[type]){
-        return doc1.scores[type] - doc2.scores[type]
+        return doc2.scores[type] - doc1.scores[type]
       }
       else{
         return doc1.index - doc2.index

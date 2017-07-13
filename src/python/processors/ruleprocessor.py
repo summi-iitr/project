@@ -3,8 +3,8 @@ from scraping import docu
 from io_utils import output_data
 import json
 
-stepindi = ['steps','substeps','cmd','results']
-defindi = ['conbody','shortdesc','body','context']
+stepindi = ['steps','substeps','cmd','results','taskbody']
+defindi = ['conbody','shortdesc','body','context','section']
 
 class rules:
     def __init__(self):
@@ -24,9 +24,9 @@ class StepsRule(rules):
         words = element['xpath'].split('/')
         restype = element['type']
         if( words[-1] in stepindi ) :
-            self.hash['STP'] += 10
-        if( restype == 'STP' ) :
             self.hash['STP'] += 20
+        if( restype == 'STP' ) :
+            self.hash['STP'] += 10
 
         return self.hash
 
@@ -47,9 +47,9 @@ class DefRule(rules):
         words = element['xpath'].split('/')
         restype = element['type']
         if( words[-1] in defindi ) :
-            self.hash['DEF'] += 10
-        if( restype == 'DEF' ) :
             self.hash['DEF'] += 20
+        if( restype == 'DEF' ) :
+            self.hash['DEF'] += 10
 
         return self.hash
 
@@ -70,9 +70,9 @@ class DescRule(rules):
         words = element['xpath'].split('/')
         restype = element['type']
         if( words[-1] in defindi ) :
-            self.hash['DES'] += 10
-        if( restype == 'DES' ) :
             self.hash['DES'] += 20
+        if( restype == 'DES' ) :
+            self.hash['DES'] += 10
 
         return self.hash
 
