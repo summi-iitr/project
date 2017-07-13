@@ -55,13 +55,14 @@ def scrape():
                         newElement={}
                         newElement["filename"] = filename
                         newElement['title']=titel
-                        # if steps
-                        stepsProcessor = StepsProcessor(child)
-                        newElement["text"]=stepsProcessor.getStepsHTML()
-                        #else
-                        newElement["text"]=content
+                        if (child.tag == 'taskbody'):
+                            stepsProcessor = StepsProcessor(child)
+                            newElement["text"]=stepsProcessor.getStepsHTML()
+                            print newElement["text"]
+                        else:
+                            newElement["text"]=content
 
-                        newElement["para"] = 'True'
+                        newElement["para"] = 'true'
                         newElement['xpath'] = pathx
 
                         docmap.append(newElement)
@@ -210,7 +211,7 @@ def typedef (doc):
 
 
 docu=scrape()
-linescrape(docu)
+#linescrape(docu)
 #linescrape(docu)
 parse(docu)
 #docu = linescrape()
