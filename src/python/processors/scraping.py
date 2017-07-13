@@ -10,6 +10,8 @@ from file_utils import absolute_path
 from consts import SUBJECTS,OBJECTS,stopwords
 from subverb import findSVAOs
 from stepsProcessor import StepsProcessor
+from xml_utils import textify
+
 
 nlp = spacy.load('en')
 parser = English()
@@ -17,15 +19,7 @@ parser = English()
 
 path = absolute_path('../../../samples1')
 
-def textify(node):
-    s=[]
-    if node.text:
-        s.append(node.text)
-    for child in node.getchildren():
-        s.extend(textify(child))
-    if node.tail:
-        s.append(node.tail)
-    return s
+
 
 def xapthget(tree,node):
     return tree.getpath(node)
@@ -57,8 +51,8 @@ def scrape():
                         newElement['title']=titel
                         if (child.tag == 'taskbody'):
                             stepsProcessor = StepsProcessor(child)
-                            newElement["text"]=stepsProcessor.getStepsHTML()
-                            print newElement["text"]
+                            newElement["text"]=stepsProcessor.getStepsHTML().encode("ascii","ignore")
+                            #print newElement["text"]
                         else:
                             newElement["text"]=content
 
@@ -81,29 +75,30 @@ def linescrape(docmap):
             for child in root:
                 if(child.tag == 'title'):
                     titel = ' '.join(textify(child)).replace('\n','')
-                for tag in child:
-                    content = ' '.join(textify(tag)).replace('\n',' ')
-                    content = content.encode('ascii','ignore')
-                    content = content.decode('utf-8','ignore')
-                    pathx = xapthget(tree,tag)
-                    doc = nlp(content)
-                    senlist = doc.sents
-                    for sent in senlist:
-                        newElement={}
-                        newElement["filename"] = filename
-                        newElement['title']=titel
-                        newElement["text"]=sent.text
-                        newElement["para"] = 'False'
-                        newElement['xpath'] = pathx
-                        svotrips = findSVAOs(sent)
-                        a = []
-                        for elem in svotrips:
-                            strns = ' '.join(elem)
-                            a.append(strns)
+                if(child.tag != 'taskbody'):
+                    for tag in child:
+                        content = ' '.join(textify(tag)).replace('\n',' ')
+                        content = content.encode('ascii','ignore')
+                        content = content.decode('utf-8','ignore')
+                        pathx = xapthget(tree,tag)
+                        doc = nlp(content)
+                        senlist = doc.sents
+                        for sent in senlist:
+                            newElement={}
+                            newElement["filename"] = filename
+                            newElement['title']=titel
+                            newElement["text"]=sent.text
+                            newElement["para"] = 'False'
+                            newElement['xpath'] = pathx
+                            svotrips = findSVAOs(sent)
+                            a = []
+                            for elem in svotrips:
+                                strns = ' '.join(elem)
+                                a.append(strns)
 
-                        newElement['SVO'] = a
+                            newElement['SVO'] = a
 
-                        docmap.append(newElement)
+                            docmap.append(newElement)
 
     #return(docmap)
     #output_data(docmap)
@@ -120,7 +115,7 @@ def parse(doc):
     cp=nltk.RegexpParser(grammar)
 
     for elem in doc:
-        value=elem['text']
+        value=elem['text'].encode('ascii','ignore')
         parse = nlp(value.decode('utf-8','ignore'))
         tagged =[]
         for word in parse:
@@ -211,7 +206,7 @@ def typedef (doc):
 
 
 docu=scrape()
-#linescrape(docu)
+linescrape(docu)
 #linescrape(docu)
 parse(docu)
 #docu = linescrape()
