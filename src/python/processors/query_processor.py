@@ -2,8 +2,9 @@ import sys
 import spacy
 from spacy.en import English
 from io_utils import read_input, output_data
-from consts import intent , OBJECTS 
+from consts import intent , OBJECTS ,VERBS
 from subverb import findSVAOs
+import string
 
 nlp = spacy.load('en')
 
@@ -31,7 +32,10 @@ def types(ques):
             que = "STP"
         if ( item.tag_ == 'WP' and item.text.lower() == 'what' and item.head.orth_.encode('ascii') == 'is'):
             que = 'DEF' 
-    
+
+    if(parsed[0].tag_ in VERBS ):
+        que = 'STP'
+
     if(que == 's'):
         que = 'DES'
 
@@ -44,7 +48,7 @@ def nounword(ques):
     parsed = nlp(ques)
     #for np in parsed :
     for np in parsed.noun_chunks :
-        if  ( np.root.tag_ != "WP" ):
+        if  ( np.root.tag_ != "WP" and np.text != ''):
             featlist.append(np.text)
 
         #if (np.pos_ == 'NOUN' or np.pos_ == 'PROPN'):
@@ -74,9 +78,10 @@ def findsvo(ques):
     a = findSVAOs(parsed)
     return a
 
-
+exclude = set(string.punctuation)
 question = read_input()
-question = question.decode('utf-8')
+question = ''.join(ch for ch in question if ch not in exclude)
+question = question.decode('utf-8').strip()
 #print question
 svos = findsvo(question)
 pos_tags = process(question)

@@ -37,7 +37,7 @@ def scrape():
             for child in root:
                 if(child.tag == 'title'):
                     titel = ' '.join(textify(child)).replace('\n','')
-                if(child.tag != 'title'):
+                if(child.tag != 'title' and child.tag != 'prolog'):
                         content = ' '.join(textify(child)).replace('\n',' ').strip()
                         if(len(content) == 0):
                             continue
@@ -75,7 +75,7 @@ def linescrape(docmap):
             for child in root:
                 if(child.tag == 'title'):
                     titel = ' '.join(textify(child)).replace('\n','')
-                if(child.tag != 'taskbody'):
+                if(child.tag != 'taskbody' and child.tag != 'title' and child.tag != 'prolog'):
                     for tag in child:
                         content = ' '.join(textify(tag)).replace('\n',' ')
                         content = content.encode('ascii','ignore')
@@ -209,7 +209,7 @@ docu=scrape()
 linescrape(docu)
 #linescrape(docu)
 parse(docu)
-#docu = linescrape()
+
 subobjadder(docu)
 #treevisual(docu)
 
