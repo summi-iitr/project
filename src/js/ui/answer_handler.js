@@ -65,6 +65,8 @@ let onSolrQueryResult = (res, type) =>{
 
     //let answerHtml =   setscore(docs)
 
+    $('.first-answer').show()
+    $('#first-answer').html(top_docs[0])
 
     $('.predicted-answer').show()
     $('#processed_answer').html(answerHtml)
