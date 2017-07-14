@@ -64,12 +64,13 @@ let onSolrQueryResult = (res, type) =>{
 
 
     //let answerHtml =   setscore(docs)
+    if(top_docs.length > 0 &&  top_docs[0]["text"]){
+        $('.first-answer').show()
+        $('#first_answer').html(top_docs[0]["text"][0])
 
-    $('.first-answer').show()
-    $('#first-answer').html(top_docs[0])
-
-    $('.predicted-answer').show()
-    $('#processed_answer').html(answerHtml)
+        $('.predicted-answer').show()
+        $('#processed_answer').html(answerHtml)
+      }
   }
 }
 
