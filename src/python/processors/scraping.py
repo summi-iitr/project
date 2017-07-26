@@ -19,6 +19,15 @@ parser = English()
 
 path = absolute_path('../../../samples1')
 
+def lemmatize(sentence):
+    sent= []
+    sentence = sentence.decode('utf-8','ignore')
+    parsed = nlp(sentence)
+    for w in parsed:
+        if(w.text not in stopwords):
+            sent.append(w.lemma_)
+    return ' '.join(sent)
+
 
 
 def xapthget(tree,node):
@@ -29,14 +38,15 @@ def scrape():
 
     for filename in os.listdir(path):
 
-        if filename.endswith('.xml') or filename.endswith('.dita') :
+        if filename.endswith('.ditamap') or filename.endswith('.dita') or filename.endswith('.xml'):
             fullname = os.path.join(path,filename)
             tree = etree.parse(fullname)
             root = tree.getroot()
 
             for child in root:
                 if(child.tag == 'title'):
-                    titel = ' '.join(textify(child)).replace('\n','')
+                    var = ' '.join(textify(child)).replace('\n','')
+                    titel =  lemmatize(var)
                 if(child.tag != 'title' and child.tag != 'prolog'):
                         content = ' '.join(textify(child)).replace('\n',' ').strip()
                         if(len(content) == 0):
@@ -47,7 +57,7 @@ def scrape():
                         pathx = xapthget(tree,child)
 
                         newElement={}
-                        newElement["filename"] = filename
+                        #newElement["filename"] = filename
                         newElement['title']=titel
                         if (child.tag == 'taskbody'):
                             stepsProcessor = StepsProcessor(child)
@@ -58,6 +68,7 @@ def scrape():
 
                         newElement["para"] = 'true'
                         newElement['xpath'] = pathx
+                        newElement['SVO'] = ''
 
                         docmap.append(newElement)
 
@@ -67,31 +78,53 @@ def scrape():
 def linescrape(docmap):
     #docmap = []
     for filename in os.listdir(path):
-        if filename.endswith('.xml') or filename.endswith('.dita'):
+        if filename.endswith('.ditamap') or filename.endswith('.dita') or filename.endswith('.xml'):
             fullname = os.path.join(path,filename)
             tree = etree.parse(fullname)
             root = tree.getroot()
 
             for child in root:
                 if(child.tag == 'title'):
-                    titel = ' '.join(textify(child)).replace('\n','')
+                    var = ' '.join(textify(child)).replace('\n','')
+                    titel =  lemmatize(var)
+
                 if(child.tag != 'taskbody' and child.tag != 'title' and child.tag != 'prolog'):
                     for tag in child:
-                        content = ' '.join(textify(tag)).replace('\n',' ')
+                        if(tag == 'title'):
+                            titel = ' '.join(textify(tag)).replace('\n',' ').strip()
+                            continue
+
+                        content = ' '.join(textify(tag)).replace('\n',' ').strip()
+                        if(len(content) == 0):
+                            continue
                         content = content.encode('ascii','ignore')
-                        content = content.decode('utf-8','ignore')
+
                         pathx = xapthget(tree,tag)
+
+
+                        # newElement={}
+                        # newElement["filename"] = filename
+                        # newElement['title']=titel
+                        # newElement["text"]=content
+                        # newElement["para"] = 'false'
+                        # newElement['xpath'] = pathx
+
+                        # docmap.append(newElement)
+
+                        content = content.decode('utf-8','ignore')
                         doc = nlp(content)
                         senlist = doc.sents
+                       
                         for sent in senlist:
+                            a = []
                             newElement={}
                             newElement["filename"] = filename
-                            newElement['title']=titel
-                            newElement["text"]=sent.text
+                            newElement['title'] = titel
+                            newElement["text"] = sent.text
                             newElement["para"] = 'False'
                             newElement['xpath'] = pathx
                             svotrips = findSVAOs(sent)
-                            a = []
+                             
                             for elem in svotrips:
                                 strns = ' '.join(elem)
                                 a.append(strns)
@@ -109,8 +142,9 @@ def parse(doc):
 
         STP:{<VB.*><PRP.*>}
         STP:{<VB.*><DT>?<NN>}
-        STP:{<VB.*><DT>?<JJ.*>*<NN.*>}
+        STP:{<VB.*><DT>?<JJ.*>*<NN.*>} 
         """
+#DEF:{<NN.*><VB.*><NN.*>}
 
     cp=nltk.RegexpParser(grammar)
 
@@ -126,6 +160,7 @@ def parse(doc):
         for subtree in result.subtrees():
             if ( subtree.label() == 'STP'):
                         elem['type']='STP'
+
 
             else:
                         elem['type']='DES'
@@ -144,17 +179,40 @@ def subobjadder (doc):
         #if(elem["para"] == 'False'):
             sub =[]
             obj =[]
+
             words = elem['text']
             words = words.decode('utf-8','ignore')
             parsed = nlp(words)
+
+
+
+    #adding lemmatised sub-objs
             for word in parsed.noun_chunks:
-                if(word.text not in stopwords):
-                    if (word.root.dep_ in SUBJECTS):
-                        sub.append(word.text)
-                    if(word.root.dep_ in OBJECTS ):
-                        obj.append(word.text)
+                temp1= []
+                temp2 = []
+                if (word.root.dep_ in SUBJECTS):
+
+                    temp = word.lemma_
+                    sublis = temp.split(' ')
+                    for i in sublis:
+                        
+                        if(i not in stopwords and i != '-PRON-'):
+                            temp1.append(i)
+
+                    sub.append(' '.join(temp1))
+
+                if(word.root.dep_ in OBJECTS ):
+                    hold = word.lemma_
+                    objlis = hold.split(' ')
+                    for i in objlis:
+                        
+                        if(i not in stopwords  and i != '-PRON-' ):
+                            temp2.append(i)
+                    obj.append(' '.join(temp2))
+                        
+
             elem['subject'] = sub
-            elem['object'] = obj
+            elem['object'] =  obj
 
     #output_data(doc)
 
@@ -201,7 +259,21 @@ def typedef (doc):
     #output_data(doc)
 
 
+def addentity(doc):
+    #adding entities with name
+    
+    for elem in doc:
+        entities = []
+        if( elem['para'] != 'true'):
+            word = elem['text']
+            word = word.decode('utf-8','ignore')
+            parsed = nlp(word)
+            for ent in parsed.ents:
+                entity = ent.text + ' - ' + ent.label_
+                entities.append(entity)
 
+        #elem['entities'] = entities
+    #outout_data(doc)
 
 
 
@@ -214,6 +286,7 @@ subobjadder(docu)
 #treevisual(docu)
 
 typedef(docu)
+#addentity(docu)
 
 if __name__ == '__main__':
     output_data(docu)

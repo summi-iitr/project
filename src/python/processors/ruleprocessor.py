@@ -4,7 +4,7 @@ from io_utils import output_data
 import json
 
 stepindi = ['steps','substeps','cmd','results','taskbody']
-defindi = ['conbody','shortdesc','body','context','section']
+defindi = ['conbody','shortdesc','body','context','section','refbody']
 
 class rules:
     def __init__(self):
@@ -23,8 +23,9 @@ class StepsRule(rules):
         #self.hash = class_r.inhash
         words = element['xpath'].split('/')
         restype = element['type']
-        if( words[-1] in stepindi ) :
+        if(any(map(lambda each: each in words, stepindi))) :
             self.hash['STP'] += 20
+            
         if( restype == 'STP' ) :
             self.hash['STP'] += 10
 
@@ -46,15 +47,16 @@ class DefRule(rules):
 
         words = element['xpath'].split('/')
         restype = element['type']
-        if( words[-1] in defindi ) :
+        if(any(map(lambda each: each in words, defindi))) :
             self.hash['DEF'] += 20
+            
         if( restype == 'DEF' ) :
             self.hash['DEF'] += 10
 
         return self.hash
 
     def getDitaScore(self,feature):
-        self.hash = {'STP': 0,
+        self.hash = { 'STP': 0,
                        'DEF': 0,
                        'DES': 0}
         return self.checkdef(feature)
@@ -69,15 +71,17 @@ class DescRule(rules):
 
         words = element['xpath'].split('/')
         restype = element['type']
-        if( words[-1] in defindi ) :
+        if(any(map(lambda each: each in words, defindi))) :
             self.hash['DES'] += 20
+            
         if( restype == 'DES' ) :
             self.hash['DES'] += 10
+            self.hash['DEF'] += 4
 
         return self.hash
 
     def getDitaScore(self,feature):
-        self.hash = {'STP': 0,
+        self.hash = {  'STP': 0,
                        'DEF': 0,
                        'DES': 0}
         return self.checkdesc(feature)
@@ -87,21 +91,22 @@ class DescRule(rules):
 
 #   def queryscore(element):
 #       q_text = res['features'].join(' ')
+#       q_type = res['qtype']
 #       if( q_text == element['title'] ):
 #           self.hash[queryTypeMap[res['qtype']]] += 5
 
 #       for i in res['features']:
 #           if(i in element['subject']):
-#               self.hash[queryTypeMap[res['qtype']]] += 5
+#               self.hash[q_type] += 5
 #           if(i in element['object']):
-#               self.hash[queryTypeMap[res['qtype']]] += 3
+#               self.hash[q_type] += 3
 
 
 
 #   def getDitaScore(self,features):
-#       self.hash = {'step': 0,
-#                     'definition': 0,
-#                     'description': 0}
+#         self.hash = {  'STP': 0,
+#                        'DEF': 0,
+#                        'DES': 0}
 
 #       return self.queryscore(feature)
 
@@ -141,6 +146,7 @@ def scoreadd():
     d = StepsRule()
     a = DescRule()
     b = DefRule()
+
 
 # the rule-obj array
     arr =[d,a,b]

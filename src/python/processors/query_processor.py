@@ -2,7 +2,7 @@ import sys
 import spacy
 from spacy.en import English
 from io_utils import read_input, output_data
-from consts import intent , OBJECTS ,VERBS
+from consts import intent , OBJECTS , VERBS, stopwords
 from subverb import findSVAOs
 import string
 
@@ -30,6 +30,10 @@ def types(ques):
     for item in parsed:
         if ( item.tag_ == 'WRB' and item.text.lower() == 'how' ):
             que = "STP"
+        # if ( item.tag_ == 'WRB' and item.text.lower() == 'where' ):
+        #     que = "PLA"
+        # if ( item.tag_ == 'WP' and item.text.lower() == 'who' ):
+        #     que = "PER"
         if ( item.tag_ == 'WP' and item.text.lower() == 'what' and item.head.orth_.encode('ascii') == 'is'):
             que = 'DEF' 
 
@@ -45,11 +49,18 @@ def types(ques):
 
 def nounword(ques):
     featlist = []
+    
     parsed = nlp(ques)
     #for np in parsed :
     for np in parsed.noun_chunks :
-        if  ( np.root.tag_ != "WP" and np.text != ''):
-            featlist.append(np.text)
+        if  ( np.root.tag_ != "WP" ):
+            temp = np.lemma_
+            sublis = temp.split(' ')
+            for i in sublis:
+                
+                if(i not in stopwords and i != '-PRON-'):
+                    featlist.append(i)
+      
 
         #if (np.pos_ == 'NOUN' or np.pos_ == 'PROPN'):
             #if(np.tag_ != 'WP'):
@@ -59,16 +70,34 @@ def nounword(ques):
 
 def verboj(ques):
     #obj = []
+    ispassive = 0
     feat= []
     parsed = nlp(ques)
 
     for word in parsed:
-        if any ( [ word.tag_ == "VB" , word.tag_ == "VBN" , word.tag_ == "VBD" ] ):
-             feat.append(word.text)
+        if(word.tag_ in VERBS and word.text not in stopwords):
+             feat.append(word.lemma_)
 
-    for np in parsed.noun_chunks:
-        if(np.root.dep_ in OBJECTS):
-            feat.append(np.text)
+    for i in parsed.noun_chunks:
+        if(i.root.dep_ == 'nsubjpass' or i.root.dep_ == 'pobj'):
+            ispassive = 1
+            temp = i.lemma_
+            objlis = temp.split(' ')
+            for i in objlis:                 
+                if(i not in stopwords and i != '-PRON-'):
+                    feat.append(i)
+
+
+
+    if(ispassive != 1):
+        for np in parsed.noun_chunks:
+            if(np.root.dep_ in OBJECTS):
+                temp = np.lemma_
+                objlis = temp.split(' ')
+                for i in objlis:
+                    
+                    if(i not in stopwords and i != '-PRON-'):
+                        feat.append(i)
 
     #feat = pverb + ' ' + ' '.join(obj)
     return feat
@@ -77,6 +106,8 @@ def findsvo(ques):
     parsed = nlp(ques)
     a = findSVAOs(parsed)
     return a
+
+
 
 exclude = set(string.punctuation)
 question = read_input()

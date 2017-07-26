@@ -1,5 +1,5 @@
 let solr = require('solr')
-let client = solr.createClient({core:"/gettingstarted"});
+let client = solr.createClient({core:"/helpbot"});
 
 module.exports = (query_text, type, callback) =>{
   let query

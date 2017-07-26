@@ -10,8 +10,20 @@ const queryTypeMap = {
 
 let answerProcessor = (docs, type) =>{
   let newDocs = []
+
+// testing -utkarsh
+  let isInArray = (arr, str) => {
+      return arr.indexOf(str.toLowerCase()) > -1;
+  }
+
   $.each(docs, (index, doc) =>{
     doc.scores = JSON.parse(doc.scores)
+    //--->
+    // if( isInArray(doc.object, text) )
+    //   doc.scores[type]+= 5 
+    // console.log(doc.scores[type])
+    //--->
+
     doc.index = index
     newDocs.push(doc)
   })
@@ -30,38 +42,33 @@ let answerProcessor = (docs, type) =>{
   return newDocs
 }
 
+//testing --utkarsh
+// let boost = (docs, type, text ) =>{
+//   let modDocs = []
+
+// let isInArray = (arr, str) => {
+//     return arr.indexOf(str.toLowerCase()) > -1;
+// }
+
+//   $.each(docs, (index, doc) =>{
+//     doc.scores = JSON.parse(doc.scores)
+//     if( isInArray(doc.object, text) )
+//       doc.scores[type]+= 5 
+//     console.log(doc.scores[type])
+//   })
+// }
+
+
 
 let onSolrQueryResult = (res, type) =>{
   if(res && res.numFound >0){
     //let docs = res.docs.splice(0, 5)
+    //console.log(text)  //for testting
 
+    //let temp = boost(res.docs, type, text)
     let top_docs = answerProcessor(res.docs, type)
     top_docs = top_docs.splice(0, 5)
     let answerHtml = ui_utils.getTableHtml(top_docs, type)
-
-  /*function setscore(docs,q_text,q_type){
-  var score=0;
-  var text = ""
-  $.each(docs, (index,doc) =>{
-    var title = doc.title
-    //console.log("nothing recieved")
-    if (typeof(title) === 'string' && typeof(q_text) === 'string' && title === q_text)
-      score+=50;
-    var type = doc.type
-    if ( type === q_type)
-      score += 50;
-
-    let doctext = doc.text && doc.text[0]
-    if(typeof(doctext) === 'string'){
-      doctext = doctext.replace(/(\n)+/g, '<br />');
-      text += `<li>${doctext}</li>`
-      text += `${score}`
-    }
-
-  })
-  return (text.length === 0 )? text: `<ol>${text}</ol>`
-} */
-
 
     //let answerHtml =   setscore(docs)
     if(top_docs.length > 0 &&  top_docs[0]["text"]){
@@ -76,6 +83,9 @@ let onSolrQueryResult = (res, type) =>{
 
 let onQueryResult = (res) =>{
   //let q_text = $('#q_text').val()
+  console.log(res)  // again testing
+
+
   let query_result = JSON.parse(res)
   let query_param = {}
   //var q_type = queryTypeMap[query_result.qtype]
@@ -104,7 +114,7 @@ let onQueryResult = (res) =>{
 
 }
 
-
+//get the queryprocessed from the python script
 module.exports= () =>{
   let q_text = $('#q_text').val()
   $.ajax({
