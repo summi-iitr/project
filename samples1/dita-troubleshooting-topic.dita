@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "concept.dtd">
+<concept id="dita-troubleshooting-topic" xml:lang="en-us"> 
+  <title>(title)_0_Troubleshooting topic</title> 
+  <shortdesc>(shortdesc)_1_The troubleshooting topic type provides markup for corrective action information such
+		as troubleshooting and alarm clearing.</shortdesc> 
+  <conbody> 
+	 <section id="infotype">
+			<title>(title)_2_The troubleshooting information type</title>
+			<p>(p)_3_In its simplest form, troubleshooting information follows this pattern:</p>
+			<ol>
+				<li>(li)_4_A condition or symptom. Usually the condition or symptom is an undesirable state
+					in a system, a product, or a service that a reader wants to correct.</li>
+				<li>(li)_5_A cause for the condition or symptom.</li>
+				<li>(li)_6_A remedy for the condition or symptom.</li>
+			</ol>
+			<p>(p)_7_The troubleshooting topic provides sections for describing the condition, causes, and
+				remedies needed to restore a system, a product, or a service to normal.</p>
+			<p>(p)_8_For some conditions there could be more than one cause-remedy pair. The
+				troubleshooting topic accommodates this. Typically, a cause is immediately followed
+				by its remedy. Multiple cause-remedy pairs can provide a series of successive
+				fall-backs for resolving a condition.</p>
+			<p>(p)_9_Cause and remedy might occur in combinations other than pairs. It is possible to
+				have:</p>
+			<ul>
+				<li>(li)_10_Multiple causes with the same remedy</li>
+				<li>(li)_11_A single cause with more than one remedy</li>
+				<li>(li)_12_A remedy with no known cause</li>
+				<li>(li)_13_A cause with no known remedy</li>
+			</ul>
+			<p>(p)_14_The troubleshooting information type also can be used to document alarm clearing
+				strategies.</p>
+		</section> 
+	 <section id="structure">
+			<title>(title)_15_The structure of the troubleshooting topic</title>
+			<p>The top-level element for troubleshooting topics is
+					<xmlelement>(xmlelement)_16_troubleshooting</xmlelement>. The
+					<xmlelement>(xmlelement)_17_troubleshooting</xmlelement> element contains a
+					<xmlelement>(xmlelement)_18_title</xmlelement> with optional alternative titles
+					(<xmlelement>(xmlelement)_19_titlealts</xmlelement>), a short description or
+					<xmlelement>(xmlelement)_20_abstract</xmlelement>, a <xmlelement>(xmlelement)_21_prolog</xmlelement>, a
+					<xmlelement>(xmlelement)_22_troublebody</xmlelement>, and
+				<xmlelement>(xmlelement)_23_related-links</xmlelement>. </p>
+			<p><xmlelement>(xmlelement)_24_troublebody</xmlelement> is the main body element in a troubleshooting
+				topic. The <xmlelement>(xmlelement)_25_troublebody</xmlelement> element contains the following
+				elements: </p>
+			<dl>
+				<dlentry>
+					<dt><xmlelement>(xmlelement)_26_condition</xmlelement>
+					</dt>
+					<dd>This optional element is the first child of <xmlelement>(xmlelement)_27_troublebody</xmlelement>, and it
+						describes a condition or symptom that is associated with an undesirable
+						state in a system, a product, or a service. In cases where the topic title
+						fully explains the condition,<ph rev="public-review-1">(ph)_28_do not use this
+							element.</ph></dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlelement>(xmlelement)_29_troubleSolution</xmlelement>
+					</dt>
+					<dd>One or more <xmlelement>(xmlelement)_30_troubleSolution</xmlelement> elements must appear  in the
+							<xmlelement>(xmlelement)_31_troublebody</xmlelement> element.
+							<xmlelement>(xmlelement)_32_troubleSolution</xmlelement> is a wrapper element for
+							<xmlelement>(xmlelement)_33_cause</xmlelement> and <xmlelement>(xmlelement)_34_remedy</xmlelement>, each
+						of which are a cause-remedy pair. </dd>
+				</dlentry>
+			</dl>
+			<p>The <xmlelement>(xmlelement)_35_troubleSolution</xmlelement> element contains the following elements: </p>
+			<dl>
+				<dlentry>
+					<dt><xmlelement>(xmlelement)_36_cause</xmlelement>
+					</dt>
+					<dd>This optional, repeatable, first-child of<xmlelement>(xmlelement)_37_condition</xmlelement>
+						<xmlelement>(xmlelement)_38_troubleSolution</xmlelement> describes a possible cause for the
+						condition. </dd>
+				</dlentry>
+				<dlentry>
+					<dt><xmlelement>(xmlelement)_39_remedy</xmlelement>
+					</dt>
+					<dd>
+						<p>This optional, repeatable, last-child of
+								<xmlelement>(xmlelement)_40_troubleSolution</xmlelement> describes a possible remedy
+							for the condition. </p>
+						<p>The <xmlelement>(xmlelement)_41_remedy</xmlelement> element begins with an optional
+								<xmlelement>(xmlelement)_42_title</xmlelement> element followed by an optional
+								<xmlelement>(xmlelement)_43_responsibleParty</xmlelement> element followed by either
+							a <xmlelement>(xmlelement)_44_steps</xmlelement> element, a
+								<xmlelement>(xmlelement)_45_steps-unordered</xmlelement> element, or a
+								<xmlelement>(xmlelement)_46_steps-informal</xmlelement> element. The content models
+							for <xmlelement>(xmlelement)_47_steps</xmlelement>,
+								<xmlelement>(xmlelement)_48_steps-unordered</xmlelement>, and
+								<xmlelement>(xmlelement)_49_steps-informal</xmlelement> are borrowed from
+								<xmlelement>(xmlelement)_50_task</xmlelement>. This allows remedy to reuse steps
+							from tasks. </p>
+					</dd>
+				</dlentry>
+				<dlentry>
+					<dt>(dt)_51_&lt;responsibleParty&gt;</dt>
+					<dd>This optional first child of <xmlelement>(xmlelement)_52_remedy</xmlelement> indicates who
+						is expected to perform the steps that are outlined in the
+							<xmlelement>(xmlelement)_53_remedy</xmlelement> element.</dd>
+				</dlentry>
+			</dl>
+		</section> 
+	 <example id="example" otherprops="examples">
+			<p>(p)_54_Here is an example of a troubleshooting topic:</p>
+			<codeblock>(codeblock)_55_&lt;troubleshooting id="nologon"&gt;
+  &lt;title&gt;Cannot log on&lt;/title&gt;
+  &lt;shortdesc&gt;Login attempts have failed&lt;/shortdesc&gt;
+  &lt;troublebody&gt;
+    &lt;condition&gt;
+      &lt;p&gt;The system does not accept your login credentials.&lt;/p&gt;
+    &lt;/condition&gt;
+    &lt;troubleSolution&gt;
+      &lt;cause&gt;
+        &lt;p&gt;The CapsLock key might be on.&lt;/p&gt;
+      &lt;/cause&gt;
+      &lt;remedy&gt;&lt;steps-unordered&gt;
+        &lt;step&gt;
+          &lt;cmd&gt;Verify that the CapsLock key is off.&lt;/cmd&gt;
+        &lt;/step&gt;
+      &lt;/steps-unordered&gt;
+      &lt;/remedy&gt;
+    &lt;/troubleSolution&gt;
+    &lt;troubleSolution&gt;
+      &lt;cause&gt;
+        &lt;title&gt;Wrong password&lt;/title&gt;
+        &lt;p&gt;The password that you are using does not match the one
+          that is stored in the system.&lt;/p&gt;
+      &lt;/cause&gt;
+      &lt;remedy id="gotoaccountmanagement"&gt;
+        &lt;steps&gt;
+          &lt;step&gt;
+            &lt;cmd&gt;Open a Web browser window&lt;/cmd&gt;
+          &lt;/step&gt;
+          &lt;step&gt;
+            &lt;cmd&gt;Go to
+              &lt;xref href="http://itdept.example.com/reset.html"
+                format="html" scope="external"&gt;
+                Account management&lt;/xref&gt;, and follow the
+              instructions&lt;/cmd&gt;
+          &lt;/step&gt;
+        &lt;/steps&gt;
+      &lt;/remedy&gt;
+    &lt;/troubleSolution&gt;
+    &lt;troubleSolution&gt;
+      &lt;cause&gt;
+        &lt;title&gt;Unknown account name&lt;/title&gt;
+        &lt;p&gt;The account name you are using does not match the one
+          stored in the system.&lt;/p&gt;
+      &lt;/cause&gt;
+      &lt;remedy conref="#nologon/gotoaccountmanagement"/&gt;
+    &lt;/troubleSolution&gt;
+    &lt;troubleSolution&gt;
+      &lt;remedy&gt;
+        &lt;title&gt;Still cannot log on&lt;/title&gt;
+        &lt;steps-informal&gt;
+          &lt;p&gt;If none of the previous solutions work,
+            consider asking for help. Contact your system
+            administrator if your organization has one; otherwise,
+            contact our support team.&lt;/p&gt;
+        &lt;/steps-informal&gt;
+      &lt;/remedy&gt;
+    &lt;/troubleSolution&gt;
+  &lt;/troublebody&gt;
+&lt;/troubleshooting&gt;</codeblock>
+		</example>
+		<!--<section id="section_A1E4E0CE15B94E0C89740B633491C1DA"><title>Modules</title><p>The following DITA modules are provided for the troubleshooting topic. </p><dl><dlentry><dt>DTD </dt><dd><sl><sli><filepath>troubleshooting.mod</filepath> </sli><sli><filepath>troubleshooting.ent</filepath> </sli></sl></dd></dlentry><dlentry><dt>RelaxNG </dt><dd><draft-comment author="Kristen Eberlein" time="7 March 2014">Content needed here </draft-comment></dd></dlentry><dlentry><dt>XSD </dt><dd><sl><sli><filepath>troubleshootingMod.xsd</filepath> </sli><sli><filepath>troubleshootingGrp.xsd</filepath> </sli></sl></dd></dlentry></dl></section>--> 
+  </conbody> 
+</concept>

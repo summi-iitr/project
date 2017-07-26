@@ -1,5 +1,5 @@
 let solr = require('solr')
-let client = solr.createClient({core:"/helpbot"});
+let client = solr.createClient({core:"/gettingstarted"});
 module.exports = (doc, callback)=>{
 
   /*var doc1 = {

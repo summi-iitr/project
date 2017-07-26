@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "concept.dtd">
+<concept id="dita_generic_task_topic" xml:lang="en-US"> 
+  <title>(title)_0_General task topic</title> 
+  <shortdesc>(shortdesc)_1_The general-task document type was introduced in DITA 1.2. It provides a less-strict
+		content model for task-oriented information than was available previously. Some
+		organizations might prefer the general-task content model over the strict task model, as it
+		can facilitate the migration of legacy content that does not follow the strict-task topic
+		model. The general-task document type serves as the base for the strict-task and
+		machine-industry-task document types. It also can be used to create new document types or
+		specializations.</shortdesc> 
+  <conbody> 
+	 <section id="section_4B12CAE12AF84259B9DED26BC5F9FEDE"> 
+		<title>(title)_2_The purpose of the general task information type</title> 
+		<p>(p)_3_Like the DITA strict task document type, the general task document and information types
+				contain the essential building blocks to provide procedural information. Both task
+				information types answer the "How do I?" question by providing step-by-step
+				instructions that detail the requirements that must be fulfilled, the actions that
+				must be performed, and the order in which the actions must be performed. Both task
+				topics include sections for describing the context, prerequisites, expected results,
+				and other aspects of a task.</p> 
+		<p id="p_14C11461E6164EEDB93CDECE17D657C5">The general task information type is specifically
+				designed to accommodate task specializations that differ from the DITA task
+				information type. It <ph rev="public-review-1">(ph)_4_might</ph> also be used for the
+				conversion of loosely structured tasks from other sources into DITA before they are
+				restructured to follow the more restrictive DITA task model. </p> 
+	 </section> 
+	 <section id="section_0C8A068CDF1D498F9FF534D3CE88CF2F"> 
+		<title>(title)_5_The structure of the general task topic</title> 
+		<p id="p_366CB29A7238470BA9070488F953FBDD">The
+		  <xmlelement>(xmlelement)_6_task</xmlelement> element is the top-level element for the general
+		  task topic. The general task topic contains a <xmlelement>(xmlelement)_7_title</xmlelement>
+		  and a <xmlelement>(xmlelement)_8_taskbody</xmlelement> with optional alternative titles
+		  (<xmlelement>(xmlelement)_9_titlealts</xmlelement>), a short description or
+		  <xmlelement>(xmlelement)_10_abstract</xmlelement>, a <xmlelement>(xmlelement)_11_prolog</xmlelement>, and
+		  <xmlelement>(xmlelement)_12_related-links</xmlelement>.
+		</p> 
+		<p id="p_7262A46437C34654BD4E46DC49BC6FD4">(p)_13_The following elements are
+		  described here because they are introduced as part of the general task model.
+		  All other elements are described in the strict task topic.</p> 
+		<dl> 
+		  <dlentry> 
+			 <dt><xmlelement>(xmlelement)_14_section</xmlelement>
+			 </dt> 
+			 <dd>Represents an organizational division in a task topic. Sections organize subsets of
+						information within the larger topic. Sections <ph rev="public-review-1">(ph)_15_cannot</ph> be nested. A section <ph rev="public-review-1">(ph)_16_can</ph>
+						have an optional <xmlelement>(xmlelement)_17_title</xmlelement>. </dd> 
+		  </dlentry> 
+		  <dlentry> 
+			 <dt><xmlelement>(xmlelement)_18_steps-informal</xmlelement>
+			 </dt> 
+			 <dd>Describes procedural task information that would not normally be ordered as
+							<xmlelement>(xmlelement)_19_steps</xmlelement>, such as a group of general procedures
+						that <ph rev="public-review-1">(ph)_20_might</ph> all be applied in a particular
+						situation. Instead of <xmlelement>(xmlelement)_21_step</xmlelement>, the
+							<xmlelement>(xmlelement)_22_steps-informal</xmlelement> element uses
+							<xmlelement>(xmlelement)_23_ol</xmlelement> and <xmlelement>(xmlelement)_24_ul</xmlelement> elements,
+						which are less strictly defined than the <xmlelement>(xmlelement)_25_step</xmlelement>
+						element. When converting legacy content, it <ph rev="public-review-1">(ph)_26_might</ph> be simpler to convert numbered lists to
+							<xmlelement>(xmlelement)_27_ol</xmlelement> elements than to
+							<xmlelement>(xmlelement)_28_step</xmlelement> elements. </dd> 
+		  </dlentry> 
+		</dl> 
+	 </section> 
+	 <section id="section_9CD7027683F049709DD7BCD431B421D8"> 
+		<title>(title)_29_Comparison of general and strict task</title> 
+		<p id="p_5533CE00385F44929D16A29C78727AF9">(p)_30_The following table compares
+		  the structures of general and strict task:</p> 
+		<table id="table_D297CDD1D8B24415A28A74A37372B423"> 
+		  <tgroup cols="2"> 
+			 <colspec colname="col1"/> 
+			 <colspec colname="col2"/> 
+			 <thead> 
+				<row> 
+				  <entry valign="top">(entry)_33_General taskbody</entry> 
+				  <entry valign="top">(entry)_34_Strict taskbody constraint</entry> 
+				</row> 
+			 </thead> 
+			 <tbody> 
+				<row> 
+				  <entry>(entry)_35_prerequisite (optional, in any order, any number)</entry> 
+				  <entry>(entry)_36_prerequisite (optional, one only, must precede context)</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_37_context (optional, in any order, any number)</entry> 
+				  <entry>(entry)_38_context (optional, one only, must follow prerequisite)</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_39_section (optional, in any order, any number)</entry> 
+				  <entry>(entry)_40_(not defined for strict taskbody)</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_41_steps</entry> 
+				  <entry>(entry)_42_steps</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_43_steps-unordered</entry> 
+				  <entry>(entry)_44_steps-unordered</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_45_steps-informal</entry> 
+				  <entry>(entry)_46_(not defined for strict taskbody)</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_47_result (optional, one only, precedes example)</entry> 
+				  <entry>(entry)_48_result (optional, one only, precedes example)</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_49_example (optional, any number, precedes post-req)</entry> 
+				  <entry>(entry)_50_example (optional, one only, precedes post-req)</entry> 
+				</row> 
+				<row> 
+				  <entry>(entry)_51_post-requisite (optional, any number)</entry> 
+				  <entry>(entry)_52_post-requisite (optional, one only)</entry> 
+				</row> 
+			 </tbody> 
+		  </tgroup> 
+		</table> 
+	 </section>
+		<!--<section id="section_775B8F7510FF4281AB4CB26AA3508D99"><title>Modules</title><p id="p_4DFD5C03379544B19294DB24B0BB12E5">The following DITA modules are provided for the task topic. </p><sl><sli><filepath>task.mod</filepath>, <filepath>task.ent</filepath> (DTD) </sli><sli><filepath>taskMod.xsd</filepath>, <filepath>taskGrp.xsd</filepath> (Schema) </sli><sli rev="DITA1.3 proposal-13112"><filepath>taskMod.rng</filepath> (RELAX NG XML syntax) </sli><sli rev="DITA1.3 proposal-13112"><filepath>taskMod.rnc</filepath> (RELAX NG compact syntax) </sli></sl></section>--> 
+  </conbody> 
+</concept>

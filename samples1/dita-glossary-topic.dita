@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Composite//EN" "concept.dtd">
+<concept id="glossaryArch" xml:lang="en-us">
+  <title>(title)_0_Glossary entry topic</title>
+  <shortdesc>Each glossary entry <xmlelement>(xmlelement)_1_glossentry</xmlelement> topic defines a single sense of
+    one term. Besides identifying the term and providing a definition, the topic accommodates basic
+    terminology information, such as part of speech. A glossentry topic <ph rev="public-review-1">(ph)_2_might</ph> also include acronyms and acronym expansions. Glossentry topics can be assembled
+    by authors or processes to create glossaries for various purposes, including books, websites, or
+    other projects.</shortdesc>
+  <conbody>
+    <section id="purpose">
+      <title>(title)_3_The purpose of the glossary entry topic</title>
+      <p>(p)_4_Defining terminology in a glossary ensures that a team of writers uses the same term for
+        the same concept. A glossary added to a book or available online in conjunction with other
+        subject matter provides the reader with definitions of unfamiliar terms and expands
+        acronyms.</p>
+      <!-- 1. from
+ jeff ogden: Say a little more. Say that collections of glossary
+ entries are assembled into collections of terms when they are    
+ referenced from a map. Say that the Glossary topic type was originally
+ created for use with bookmap, but can be used elsewhere. 2. MP
+ response: reluctant to say either - I'm not clear on what special
+ processing maps could/would provide. Added a paragraph with the
+ simple case (just author a glossary) below. On the "originally created
+ for bookmap" front, I'm not sure I agree - one of the requirements
+ going in from an IBM perspective was for  online glossaries rather
+ than book-based ones. 3.MP: per jeff ogden
+ and per stan doherty, provided some extra text to clarify that
+ glossary topics do go into      glossaries -->
+    </section>
+    <section id="structure">
+      <title>(title)_5_The structure of the glossentry topic</title>
+      <p>The top-level element for a DITA glossentry topic is the <xmlelement>(xmlelement)_6_glossentry</xmlelement>
+        element. Every glossentry topic contains a <xmlelement>(xmlelement)_7_glossterm</xmlelement> and a <xmlelement>(xmlelement)_8_glossdef</xmlelement> element and
+        optional <xmlelement>(xmlelement)_9_related-links</xmlelement>. </p>
+      <p>Where a term has multiple definitions, <ph rev="public-review-1">(ph)_10_best practices call for
+          the writer to</ph> create multiple glossentry topics with the same term in the
+          <xmlelement>(xmlelement)_11_glossterm</xmlelement> element but different definitions in the
+          <xmlelement>(xmlelement)_12_glossdef</xmlelement> element. A process can collate and group glossentry
+        topics by term when generating formatted output. Note that definitions with the same term in
+        one language can have different terms in other languages, so translations can result in
+        different collation and grouping of the same set of glossentry topics. </p>
+      <p>(p)_13_Here is an example of a simple glossentry topic:</p>
+      <codeblock>(codeblock)_14_&lt;glossentry id="ddl"&gt;
+    &lt;glossterm&gt;Data Definition Language&lt;/glossterm&gt;
+    &lt;glossdef&gt;A language used for defining database schemas.&lt;/glossdef&gt;
+&lt;/glossentry&gt;</codeblock>
+      <p>To create a glossary, authors can group multiple entries together by<ul>
+          <li>(li)_15_authoring in a single document using the Glossary group document type</li>
+          <li>(li)_16_authoring in a single document under a container topic using the ditabase document
+            type</li>
+          <li>(li)_17_referencing the glossentry topics from a map</li>
+          <li>(li)_18_using an automated process</li>
+        </ul>For example, an automated process <ph rev="public-review-1">(ph)_19_might</ph> assemble
+        glossentry topics from a repository based on the <xmlelement>(xmlelement)_20_term</xmlelement> markup in a
+        particular collection of topics. </p>
+      <!--  Jeff Ogden 2007/01/22: made authoring option using ditabase explicit; made automated processing
+      option clearer with an example -->
+    </section>
+    <section id="acronyms">
+      <title>(title)_21_Acronyms defined within glossentry topics</title>
+      <p>The glossentry topic <ph rev="public-review-1">(ph)_22_can</ph> be used to provide expansions of
+        acronyms in online text and assist in the proper translation of acronyms into multiple
+        languages. The acronym elements of the glossentry topic include the following:<ul id="ul_584c0ec8-47d8-48db-8f4c-4e8e67e87d52">
+          <li>(li)_23_&lt;glossterm&gt; to enter the full text to which the acronym refers</li>
+          <li>(li)_24_&lt;glossSurfaceForm&gt; to provide the appropriate rendering of the full text plus the
+            acronym in each language</li>
+          <li>(li)_25_&lt;glossAcronym&gt; to provide the acronym text itself</li>
+        </ul></p>
+      <p>(p)_26_Here is an example of an acronym used in the glossentry topic:</p>
+      <codeblock>(codeblock)_27_&lt;glossentry id="wmd" xml:lang="en"&gt;
+  &lt;glossterm&gt;Weapons of Mass Destruction&lt;/glossterm&gt;
+  &lt;glossBody&gt;
+    &lt;glossSurfaceForm&gt;Weapons of Mass Destruction (WMD)&lt;/glossSurfaceForm&gt;
+    &lt;glossAlt&gt;
+      &lt;glossAcronym&gt;WMD&lt;/glossAcronym&gt;
+    &lt;/glossAlt&gt;
+  &lt;/glossBody&gt;
+&lt;/glossentry&gt;</codeblock>
+      <p>(p)_28_Here is an example of how the glossentry topic would be translated into Spanish:</p>
+      <codeblock>(codeblock)_29_&lt;glossentry id="wmd" xml:lang="es"&gt;
+  &lt;glossterm&gt;armas de destrucción masiva&lt;/glossterm&gt;
+  &lt;glossBody&gt;
+    &lt;glossSurfaceForm&gt;&lt;/glossSurfaceForm&gt;
+    &lt;glossAlt&gt;
+      &lt;glossAcronym&gt;&lt;/glossAcronym&gt;
+    &lt;/glossAlt&gt;
+  &lt;/glossBody&gt;
+&lt;/glossentry&gt;</codeblock>
+      <p>Note that because no acronym exists for the term in Spanish, the <xmlelement>(xmlelement)_30_glossSurfaceForm</xmlelement> and
+        <xmlelement>(xmlelement)_31_glossAcronym</xmlelement> elements are left blank. </p>
+      <p>(p)_32_In some languages, the surface form that expands the acronym in its first use handles the
+        formatting differently than in English. For example, in Polish, the acronym precedes the
+        expansion.</p>
+      <codeblock>(codeblock)_33_&lt;glossentry id="eu" xml:lang="pl"&gt;
+  &lt;glossterm&gt;Unia Europejska&lt;/glossterm&gt;
+  &lt;glossBody&gt;
+    &lt;glossSurfaceForm&gt;UE (Unia Europejska)&lt;/glossSurfaceForm&gt;
+    &lt;glossAlt&gt;
+      &lt;glossAcronym&gt;UE&lt;/glossAcronym&gt;
+    &lt;/glossAlt&gt;
+  &lt;/glossBody&gt;
+&lt;/glossentry&gt;</codeblock>
+      <p>For more information about the correct use of acronym expansions in multiple languages, see
+          <i>(i)_34_Best Practice for Managing Acronyms and Abbreviations in DITA</i>, produced by the DITA
+        Translation Subcommittee. <xref format="html" href="http://www.oasis-open.org/committees/download.php/29734/AcronymBestPractice_08112008.doc" scope="external"/></p>
+    </section>
+    <!--<section><title>Modules</title><p>The following DITA modules are provided for the glossary entry topic. <note>The glossary.dtd, glossary.ent, and glossary.mod are deprecated versions of the files glossentry.dtd., glossentry.ent, and glossentry.mod. The deprecated files are included in DITA 1.2 to provide backward compatibility with DITA 1.0 and 1.1.</note></p><sl><sli><filepath>glossentry.dtd</filepath>, <filepath>glossentry.ent</filepath>, <filepath>glossentry.mod</filepath> (DTD)</sli><sli><filepath>glossentryMod.xsd</filepath>, <filepath>glossentryGrp.xsd</filepath> (Schema)</sli><sli rev="DITA1.3 proposal-13112"><filepath>glossentry.rng</filepath>, <filepath>glossentryMod.rng</filepath> (RELAX NG XML syntax)</sli><sli rev="DITA1.3 proposal-13112"><filepath>glossentry.rnc</filepath>, <foreign>glossentryMod.rnc</foreign> (RELAX NG compact syntax)</sli></sl></section>-->
+  </conbody>
+</concept>
