@@ -9,7 +9,7 @@ module.exports = (query_text, type, callback) =>{
       para = ' AND para:true'
     }
 
-    query = `title:(${query_text})^4 OR subject:${query_text} OR object: ${query_text} ${para}`
+    query = `title:(${query_text})^4 OR subject: ${query_text} OR object: ${query_text} ${para}`
   }
   else{
     query = `text:${query_text}`

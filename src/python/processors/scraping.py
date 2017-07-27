@@ -17,7 +17,7 @@ nlp = spacy.load('en')
 parser = English()
 
 
-path = absolute_path('../../../samples1')
+path = absolute_path('../../../samples')
 
 def lemmatize(sentence):
     sent= []
@@ -44,7 +44,7 @@ def scrape():
             root = tree.getroot()
 
             for child in root:
-                if(child.tag == 'title'):
+                if(child.tag == 'title' or child.tag == 'glossterm'):
                     var = ' '.join(textify(child)).replace('\n','')
                     titel =  lemmatize(var)
                 if(child.tag != 'title' and child.tag != 'prolog'):
@@ -73,6 +73,8 @@ def scrape():
                         docmap.append(newElement)
 
 
+
+
     return(docmap)
 
 def linescrape(docmap):
@@ -84,13 +86,13 @@ def linescrape(docmap):
             root = tree.getroot()
 
             for child in root:
-                if(child.tag == 'title'):
+                if(child.tag == 'title' or child.tag == 'glossterm'):
                     var = ' '.join(textify(child)).replace('\n','')
                     titel =  lemmatize(var)
 
                 if(child.tag != 'taskbody' and child.tag != 'title' and child.tag != 'prolog'):
                     for tag in child:
-                        if(tag == 'title'):
+                        if(tag == 'title' or tag == 'glossterm'):
                             titel = ' '.join(textify(tag)).replace('\n',' ').strip()
                             continue
 

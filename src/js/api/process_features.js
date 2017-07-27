@@ -12,5 +12,5 @@ let solrAdder = (data)=>{
 
 module.exports = () => {
   let pythonBridge = new PythonBridge()
-  pythonBridge.run('processors/scraping.py', "", solrAdder)
+  pythonBridge.run('processors/ruleprocessor.py', "", solrAdder)
 }

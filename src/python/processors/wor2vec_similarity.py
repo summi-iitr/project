@@ -1,4 +1,4 @@
-# import sys
+import sys
 # reload(sys)
 # sys.setdefaultencoding("utf-8")
 
@@ -8,6 +8,7 @@
 import gensim
 from scraping import docu
 from gensim.models import word2vec
+from io_utils import read_input
 # Change this to your own path.
 pathToBinVectors = '/Users/utkarsh/Documents/nlp/model/GoogleNews-vectors-negative300.bin'
 
@@ -71,7 +72,7 @@ if __name__ == "__main__":
 
 
 
-	userInput1 = 'what is the first element of glossentry topic'
+	userInput1 = read_input()
 	phraseVector1 = PhraseVector(userInput1)
 	#userInput2 = raw_input("Type the phrase2: ")
 

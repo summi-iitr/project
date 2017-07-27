@@ -5,6 +5,7 @@ import json
 
 stepindi = ['steps','substeps','cmd','results','taskbody']
 defindi = ['conbody','shortdesc','body','context','section','refbody']
+strongdef = ['glossdef']
 
 class rules:
     def __init__(self):
@@ -49,6 +50,9 @@ class DefRule(rules):
         restype = element['type']
         if(any(map(lambda each: each in words, defindi))) :
             self.hash['DEF'] += 20
+
+        if(any(map(lambda each: each in words, strongdef))) :
+            self.hash['DEF'] += 30
             
         if( restype == 'DEF' ) :
             self.hash['DEF'] += 10
