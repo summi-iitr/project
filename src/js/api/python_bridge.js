@@ -1,27 +1,45 @@
 const python_base = "./src/python/"
 let spawn = require('child_process').spawn
 class PythonBridge{
-  constructor(){
-  }
-
-  run(fileName, param, callback){
-
+  constructor(fileName){
     let filePath = python_base + fileName
-    let pythonProcess = spawn('python', [filePath])
-    let dataString = ""
-    pythonProcess.stdout.on('data', (data) => {
+    this.pyhonProcess = spawn('python', [filePath])
+    console.log(filePath)
+    if(this.pythonProcess){
+      console.log("I spawned")
+    }
+    else{
+      console.log("I failed")
+    }
+    this.init()
+  }
+  init(){
+    this.pythonProcess.stdout.on('data', (data) => {
       dataString += data.toString();
     })
-    pythonProcess.stderr.on('data', (data) => {
+    this.pythonProcess.stderr.on('data', (data) => {
       let errorString = data.toString();
       console.error(errorString)
     })
-    pythonProcess.stdout.on('end', function(){
-      callback(dataString);
-    });
-    pythonProcess.stdin.write(JSON.stringify(param))
-    pythonProcess.stdin.end()
+    this.pythonProcess.stdout.on('end',() =>{
+      if(this.callback){
+        this.callback(dataString)
+      }
+    })
   }
 
+  run(fileName, param, callback){
+    let dataString = ""
+    this.callback = callback
+    this.pythonProcess.stdin.write(JSON.stringify(param))
+    this.pythonProcess.stdin.end()
+  }
+
+  runFunc(fileName, param, callback){
+    let dataString = ""
+    this.callback = callback
+    this.pythonProcess.stdin.write(JSON.stringify(param))
+    this.pythonProcess.stdin.end()
+  }
 }
 module.exports = PythonBridge

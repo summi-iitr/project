@@ -1,4 +1,4 @@
-from nltk.stem.wordnet import WordNetLemmatizer
+#from nltk.stem.wordnet import WordNetLemmatizer
 from spacy.en import English
 
 SUBJECTS = ["nsubj", "nsubjpass", "csubj", "csubjpass", "agent", "expl"]
@@ -212,4 +212,3 @@ def generate_left_right_adjectives(obj):
             obj_desc_tokens.extend(generate_left_right_adjectives(tok))
 
     return obj_desc_tokens
-

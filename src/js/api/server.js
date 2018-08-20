@@ -1,11 +1,26 @@
 var express = require('express');
 let app = express();
 let query_processor = require('./query')
+let synonymn_query_processor = require('./syn_query')
+
 let feature_processor = require('./process_features')
 let solr_query_processor = require('./solr/query')
 let solr_add_processor = require('./solr/add')
 //const feature_adder = re
 app.use(express.static('public'))
+
+app.get('/synquery', function (req, res) {
+  let callback =  (text) =>{
+    console.log(text)
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(text));
+  }
+
+  let q_text = decodeURIComponent(req.query.q)
+  console.log(q_text)
+  synonymn_query_processor(q_text, callback)
+})
+
 
 app.get('/query', function (req, res) {
   let callback =  (text) =>{
@@ -17,6 +32,7 @@ app.get('/query', function (req, res) {
   console.log(q_text)
   query_processor(q_text, callback)
 })
+
 app.get('/features', function (req, res) {
   let callback =  (text) =>{
     //console.log(text)
