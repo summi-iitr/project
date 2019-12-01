@@ -19,7 +19,7 @@
   "author": "GitHub",
   "license": "CC0-1.0",
   "dependencies": {
-    "jquery": "3.2.1",
+    "jquery": "3.4.1",
     "child_process": "",
     "bootstrap": "3.3.7",
     "wordnet-db": "",
