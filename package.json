@@ -21,7 +21,7 @@
   "dependencies": {
     "jquery": "3.2.1",
     "child_process": "",
-    "bootstrap": "3.3.7",
+    "bootstrap": "3.4.1",
     "wordnet-db": "",
     "wndb-with-exceptions":"",
     "express":"",
