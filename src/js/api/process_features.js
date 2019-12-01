@@ -1,5 +1,4 @@
-
-const PythonBridge = require('./python_bridge');
+const PythonBridge = require('./python_bridge')
 let solr_add_processor = require('./solr/add')
 let solrAdder = (data)=>{
   docs = JSON.parse(data)

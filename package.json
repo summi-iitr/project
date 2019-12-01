@@ -8,7 +8,7 @@
     "pack": "build --dir",
     "dist": "build"
   },
-  "repository": "https://git.corp.adobe.com/TechComm/Help-bot",
+  "repository": "https://git.corp.cisco.com/TechComm/Help-bot",
   "keywords": [
     "Electron",
     "quick",
@@ -23,12 +23,14 @@
     "child_process": "",
     "bootstrap": "3.3.7",
     "wordnet-db": "",
-    "wndb-with-exceptions":"",
-    "express":"",
-    "body-parser":"",
-    "cookie-parser":"",
-    "multer":"",
-    "solr":"",
+    "wndb-with-exceptions": "",
+    "express": "",
+    "body-parser": "1.19.0",
+    "cookie-parser": "1.4.4",
+    "express-session": "",
+    "multer": "",
+    "solr": "",
+    "mysql": "2.17.1",
     "babel-preset-es2015": "",
     "babelify": "",
     "grunt": "^1.0.1",
@@ -46,11 +48,10 @@
     "grunt-exec": "",
     "grunt-sass": "",
     "load-grunt-tasks": "",
-    "solr-query-builder":""
+    "solr-query-builder": "",
+    "xlsx": ""
   },
-  "devDependencies": {
-
-  },
+  "devDependencies": {},
   "build": {
     "appId": "id",
     "mac": {
