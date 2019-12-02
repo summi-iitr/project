@@ -1,5 +1,5 @@
 let mysql = require('mysql')
-module.exports = (email, password, callback) =>{
+module.exports = (user, callback) =>{
     var connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
@@ -7,17 +7,17 @@ module.exports = (email, password, callback) =>{
         database: 'project'
     });
     connection.connect();
-    connection.query(`SELECT * FROM users WHERE email='${email}'`, function (error, results, fields) {
+    
+    connection.query(`INSERT INTO users(name, email, password, sex, admin) VALUES ('${user.name}', '${user.email}','${user.password}', '${user.sex}', ${user.admin =='true'?1:0})`, function (error, results, fields) {
         if (error){
+            throw error
             callback(false)
+
         }
         else{
-            if(results.length === 1 && results[0].password === password){
-                callback(true, results[0].admin)
-            }
-            else{
-                callback(false)
-            }
+            
+            callback(true)
+            
         } 
         console.log('The solution is: ', JSON.stringify(results));
     })

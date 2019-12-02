@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 let handleSearch = require('./search_handler')
+let handleAddUser = require('./add_user')
 let handleAddProject = require('./project_adder')
 let userChecker = require('./check_user')
 
@@ -78,7 +79,17 @@ app.post('/search', function (req, res) {
 })
 
 app.post('/addproject', function (req, res) {
-  handleAddProject(req,res)
+  console.log("I am in post")
+  handleAddProject(req.body, (retVal)=>{
+    res.redirect('/home.html');
+  })
+})
+
+app.post('/adduser', function (req, res) {
+  console.log("I am in post")
+  handleAddUser(req.body, (retVal)=>{
+    res.redirect('/home.html');
+  })
 })
 
 app.post('/login', function (req, res) {
