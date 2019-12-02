@@ -8,6 +8,7 @@ let handleSearch = require('./search_handler')
 let handleAddUser = require('./add_user')
 let handleAddProject = require('./project_adder')
 let userChecker = require('./check_user')
+let excelHandler = require('./parse')
 
 app.use(express.static('public'))
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
@@ -24,30 +25,30 @@ app.use(session({
     }
 }));
 
-app.get('/synquery', function (req, res) {
-  var connection = mysql.createConnection({
-    host     : 'localhost',
-    user     : 'root',
-    password : 'admin',
-    database: 'project'
-  });
-  connection.connect();
-  connection.query('SELECT * FROM users', function (error, results, fields) {
-    if (error) throw error;
-    console.log('The solution is: ', JSON.stringify(results));
-  });
-  console.log("done")
-  let callback =  (text) =>{
-    console.log(text)
-    res.setHeader('Content-Type', 'text/html');
-    res.end(text);
-  }
+// app.get('/synquery', function (req, res) {
+//   var connection = mysql.createConnection({
+//     host     : 'localhost',
+//     user     : 'root',
+//     password : 'admin',
+//     database: 'project'
+//   });
+//   connection.connect();
+//   connection.query('SELECT * FROM users', function (error, results, fields) {
+//     if (error) throw error;
+//     console.log('The solution is: ', JSON.stringify(results));
+//   });
+//   console.log("done")
+//   let callback =  (text) =>{
+//     console.log(text)
+//     res.setHeader('Content-Type', 'text/html');
+//     res.end(text);
+//   }
 
-  let q_text = decodeURIComponent(req.query.q)
-  console.log(q_text)
-  callback("test")
+//   let q_text = decodeURIComponent(req.query.q)
+//   console.log(q_text)
+//   callback("test")
   // synonymn_query_processor(q_text, callback)
-})
+//})
 
 
 // middleware function to check for logged-in users
@@ -58,7 +59,11 @@ var sessionChecker = (req, res, next) => {
       next();
   }    
 };
-
+app.post('/upload/excel', function (req, res) {
+  excelHandler(req.body,()=>{
+    
+  })
+})
 
 // route for Home-Page
 app.get('/', sessionChecker, (req, res) => {
@@ -72,6 +77,7 @@ app.post('/search', function (req, res) {
 app.post('/addproject', function (req, res) {
   console.log("I am in post")
   handleAddProject(req.body, (retVal)=>{
+    console.log("completed add")
     res.redirect('/home.html');
   })
 })
@@ -83,11 +89,16 @@ app.post('/adduser', function (req, res) {
   })
 })
 
+app.get('/userinfo', function (req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  res.end(JSON.stringify({ user: req.session.user, admin: req.session.admin}));
+})
+
 app.post('/login', function (req, res) {
   userChecker(req.body.email, req.body.password, (retVal, admin)=>{
     if(retVal){
       req.session.user=req.body.email
-      req.session.admin = admin
+      req.session.admin = admin?true:false
       res.redirect('/home.html');
     }
     else{

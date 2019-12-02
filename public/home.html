@@ -27,14 +27,15 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <form class="navbar-form navbar-right">
-
+            <p></p><span id="user"></span></p>
           </form>
         </div><!--/.navbar-collapse -->
       </div>
     <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
-    <li><a data-toggle="tab" href="#menu2">Add Projet Details</a></li>
-    <li><a data-toggle="tab" href="#menu3">Add User</a></li>
+    <li class="admin-ui"><a data-toggle="tab" href="#menu2">Add Project Details</a></li>
+    <li class="admin-ui"><a data-toggle="tab" href="#menu3">Add User</a></li>
+    <li class="admin-ui"><a data-toggle="tab" href="#menu4">Upload Data</a></li>
   </ul>
   <div class="tab-content">
 <!-- Home Tab. content -->
@@ -149,13 +150,7 @@
         </div>
       </form>
 
-        <form>
-          <div class="form-group">
-            <label for="fileupload">Upload Excel File</label>
-            <input type="file" class="form-control-file" id="fileupload">
-            <button type="submit" class="btn btn-primary" id ="add_user">Add</button>
-          </div>
-        </form>
+        
       </div>
       <div id="menu2" class="tab-pane fade">
         <form  action="/addproject" method="post" >
@@ -253,6 +248,15 @@
         
         </form>
       </div>
+      <div id="menu4" class="tab-pane fade">
+          <form enctype="multipart/form-data" action="/upload/excel" method="post">
+            <div class="form-group">
+              <label for="fileupload">Upload Excel File</label>
+              <input type="file" class="form-control-file" name="excelFile" id="fileupload">
+              <button type="submit" class="btn btn-primary" id ="add_user">Add</button>
+            </div>
+          </form>
+      </div>
     </div>
     </div>
   </div>
@@ -269,5 +273,6 @@
   </script>
 
   <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/project.js"></script>
   <!-- <script src="js/helpbot.js"></script> -->
 </html>

@@ -20,8 +20,7 @@ let fn = ()=>{
             throw error
             
         }
-        else{
-            
+        else{    
             console.log('Project_users table creted successfully');
         } 
         
