@@ -9,18 +9,9 @@ let handleAddUser = require('./add_user')
 let handleAddProject = require('./project_adder')
 let userChecker = require('./check_user')
 
-// let query_processor = require('./query')
-// let synonymn_query_processor = require('./syn_query')
-
-// let feature_processor = require('./process_features')
-// let solr_query_processor = require('./solr/query')
-// let solr_add_processor = require('./solr/add')
-//const feature_adder = re
 app.use(express.static('public'))
-
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
 app.use(cookieParser());
-
 app.use(bodyParser.urlencoded({ extended: true }));
 // initialize express-session to allow us track the logged-in user across sessions.
 app.use(session({
@@ -103,61 +94,11 @@ app.post('/login', function (req, res) {
       res.redirect('/login.html');
     }
   })
-  //   // let add_text= JSON.parse(req.body)
-  //   // let callback =  (text) =>{
-  //   //   res.setHeader('Content-Type', 'application/json');
-  //   //   res.end(JSON.stringify(text));
-  //   // }
-
-  console.log(JSON.stringify(req.body))
-  //   // solr_add_processor(add_text, callback)
-  // })
 })
-// app.get('/query', function (req, res) {
-//   // let callback =  (text) =>{
-//   //   console.log(text)
-//   //   res.setHeader('Content-Type', 'application/json');
-//   //   res.end(JSON.stringify(text));
-//   // }
-//   // let q_text = decodeURIComponent(req.query.q)
-//   // console.log(q_text)
-//   // query_processor(q_text, callback)
-// })
 
-// app.get('/features', function (req, res) {
-//   // let callback =  (text) =>{
-//   //   //console.log(text)
-//   //   res.setHeader('Content-Type', 'application/json');
-//   //   res.end(JSON.stringify(text));
-//   // }
-//   // feature_processor(callback)
-// })
-// app.post('/solr/add', function (req, res) {
-//   // let add_text= JSON.parse(req.body)
-//   // let callback =  (text) =>{
-//   //   res.setHeader('Content-Type', 'application/json');
-//   //   res.end(JSON.stringify(text));
-//   // }
-//   // solr_add_processor(add_text, callback)
-// })
-// app.get('/solr/search', function (req, res) {
-//   // let callback =  (text) =>{
-//   //   res.setHeader('Content-Type', 'application/json');
-//   //   res.end(JSON.stringify(text));
-//   // }
-//   // try{
-//   //   let search_query = decodeURIComponent(req.query.q)
-//   //   let search_type = decodeURIComponent(req.query.type)
-
-//   //   solr_query_processor(search_query, search_type, callback)
-//   // }
-//   // catch(e){
-//   //   callback(e)
-//   // }
-// })
 var server = app.listen(8081, "127.0.0.1", function () {
   var host = server.address().address
   var port = server.address().port
 
-  console.log("Helpbot app listening at http://%s:%s", host, port)
+  console.log("Project app listening at http://%s:%s", host, port)
 })
