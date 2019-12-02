@@ -6,9 +6,16 @@ let createqueryString = (reqBody)=>{
     columns.forEach(column=>{
         if(reqBody[column.name]){
             columns_headers.push(column.name)
-            values.push(`'${reqBody[column.name]}'`)
+            if(column.type == "decimal"){
+                values.push(`${reqBody[column.name]}`)    
+            }
+            else{
+                values.push(`'${reqBody[column.name]}'`)
+            }
+            
         }
     })
+    console.log(`INSERT INTO project_users(${columns_headers.join(", ")}) VALUES (${values.join(", ")})`)
     return `INSERT INTO project_users(${columns_headers.join(", ")}) VALUES (${values.join(", ")})`
 }
 module.exports = (reqBody, callback) =>{

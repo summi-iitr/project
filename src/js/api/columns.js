@@ -13,7 +13,7 @@ module.exports = [
 
     },
     {
-        displayName: "Dept of PI",
+        displayName: "Dept of Co- PI",
         name: "dept_pi",
         type: "text",
         sqlType: "VARCHAR(255)"
@@ -69,13 +69,6 @@ module.exports = [
 
     },
     {
-        displayName: "No.",
-        name: "No",
-        type: "text",
-        sqlType: "VARCHAR(255)"
-
-    },
-    {
         displayName: "TYPE",
         name: "type",
         type: "text",
@@ -91,17 +84,17 @@ module.exports = [
     },
     {
         displayName: "Govt./Pvt./Other",
-        name: "Govt_Pvt",
+        name: "govt_pvt",
         type: "text",
         sqlType: "VARCHAR(255)"
 
     },
     {
-        displayName: "Wheat her industry funded",
+        displayName: "Whether industry funded",
         name: "funded",
         type: "text",
         sqlType: "VARCHAR(255)"
-
+        ////boolean
     },
     {
         displayName: "File name",
@@ -139,7 +132,15 @@ module.exports = [
 
     },
     {
-        displayName: "Date of commencement",
+        displayName: "Date of sANCTION",
+        name: "date_sanction",
+        type: "date",
+        sqlType: "DATE"
+
+    },
+    {
+        displayName: `Date of commencement
+        (Date on which Director Approved)`,
         name: "date_commencement",
         type: "text",
         sqlType: "VARCHAR(255)"

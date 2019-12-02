@@ -156,7 +156,7 @@
         <form  action="/addproject" method="post" >
           <div class="form-group">
               <label for="name">Project Title</label>
-              <input type="name" name="title" class="form-control"  placeholder="Title of the Project">
+              <input type="name" name="project_title" class="form-control"  placeholder="Title of the Project">
           </div>
         <div class="form-group">
             <label for="name">Name of PI</label>
@@ -168,7 +168,7 @@
         </div>
         <div class="form-group">
             <label for="name">Department of Co-PI</label>
-            <select class="form-control" name="co_pi_dept">
+            <select class="form-control" name="dept_pi">
               <option value="INSTITUTE">Institute</option>
               <option value="chm">Chemstry</option>
               <option value="ME">Mechanical</option>
@@ -185,7 +185,7 @@
         </div>
         <div class="form-group">
             <label for="name">Department</label>
-            <select class="form-control" name="dept">
+            <select class="form-control" name="Dept">
               <option value="INSTITUTE">Institute</option>
               <option value="chm">Chemstry</option>
               <option value="ME">Mechanical</option>
@@ -197,8 +197,12 @@
             </select>
         </div>
         <div class="form-group">
+            <label for="name">R&D</label>
+            <input type="name" name="RD" class="form-control"  placeholder="Is project an R&D">
+        </div>
+        <div class="form-group">
             <label for="name">Type of Scheme</label>
-            <input type="name" name="scheme" class="form-control"  placeholder="Project Type of Scheme">
+            <input type="name" name="type_scheme" class="form-control"  placeholder="Project Type of Scheme">
         </div>
         <div class="form-group">
             <label for="name">Project Code</label>
@@ -206,7 +210,7 @@
         </div>
         <div class="form-group">
             <label for="name">Financial Year</label>
-            <input type="name" name="financial" class="form-control"  placeholder="Financial Year">
+            <input type="name" name="Year_FY" class="form-control"  placeholder="Financial Year">
         </div>
         <div class="form-group">
             <label for="name">Type</label>
@@ -219,7 +223,7 @@
         </div>
         <div class="form-group">
             <label for="name">Sponsoring Agency</label>
-            <input type="name" name="sponsoring_agency" class="form-control"  placeholder="Sponsoring Agency">
+            <input type="name" name="s_agency" class="form-control"  placeholder="Sponsoring Agency">
         </div>
         <div class="form-group">
             <label for="name">Govt./ Pvt./Other</label>
@@ -227,16 +231,48 @@
         </div>
         <div class="form-group">
             <label for="name">Whether Industry Funded</label>
-            <input class="form-check-input" type="radio" name="industry_funded"  value="YES" checked>
+            <input class="form-check-input" type="radio" name="funded"  value="YES" checked>
             <label class="form-check-label" >
               YES
             </label>
-            <input class="form-check-input" type="radio" name="industry_funded"  value="NO">
+            <input class="form-check-input" type="radio" name="funded"  value="NO">
             <label class="form-check-label" >
               NO
             </label>
         </div>
-                
+        <div class="form-group">
+            <label for="name">File Name</label>
+            <input type="name" name="file_name" class="form-control"  placeholder="File Name">
+        </div>
+        <div class="form-group">
+            <label for="name">Overhead</label>
+            <input type="number" name="overhead" step="0.01" class="form-control"  placeholder="0.0">
+        </div>
+        <div class="form-group">
+            <label for="name">Total Granted Fund</label>
+            <input type="number" step="0.01" name="total_fund" class="form-control"  placeholder="0.0">
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Duration</label>
+            <input type="name" name="duration" class="form-control"  placeholder="Duration">
+        </div>
+        <div class="form-group">
+            <label for="name">Sanction Number</label>
+            <input type="name" name="sanction_no" class="form-control"  placeholder="Sanction Number">
+        </div>
+        <div class="form-group">
+            <label for="name">Date of Sanction</label>
+            <input type="date" name="date_sanction" class="form-control"  placeholder="Sanction Date">
+        </div>
+        <div class="form-group">
+            <label for="name">Date of Commencement</label>
+            <input type="name" name="date_commencement" class="form-control"  placeholder="Date of Commencement">
+        </div>
+        <div class="form-group">
+            <label for="name">Date of completion</label>
+            <input type="name" name="Date_completion" class="form-control"  placeholder="Date of Completion">
+        </div>         
         <div class="form-group">
             <label for="name">Status</label>
             <select class="form-control" name="status">
