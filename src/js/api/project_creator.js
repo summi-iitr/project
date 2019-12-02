@@ -10,8 +10,11 @@ module.exports = ()=>{
         database: 'project'
     });
     connection.connect();
-    let query  = `CREATE TABLE `project` (`
+    let query  = `CREATE TABLE 'project_users' (`
+    let 
     $.each(columns, column =>{
-
+        query+= `'${column.name}' ${column.sqlType},`
     })
+    query.lastIndexOf(',')
+
 }

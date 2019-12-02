@@ -9,6 +9,7 @@ module.exports = (email, password, callback) =>{
     connection.connect();
     connection.query(`SELECT * FROM users WHERE email='${email}'`, function (error, results, fields) {
         if (error){
+            
             callback(false)
         }
         else{
