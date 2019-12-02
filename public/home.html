@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>CS 501 Project</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="css/helpbot.css">
+    <style>
+      .level-2{
+        padding-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" > <img class = "logo" src="css/logo.jpg" >Project Management</a>
+
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right">
+
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#home">Search</a></li>
+    <li><a data-toggle="tab" href="#menu2">Add Projet Details</a></li>
+    <li><a data-toggle="tab" href="#menu3">Add User</a></li>
+  </ul>
+  <div class="tab-content">
+<!-- Home Tab. content -->
+    <div id="home" class="tab-pane fade in active">
+      <form class="form-signin" action="/search" method="post">
+        <div class="form-group">
+            <input class="form-check-input" type="radio" name="query_type" id="qtype1" value="project" checked>
+            <label class="form-check-label" for="qtype1">
+                No. of Research Projects/conference/workshop/STC completed in the last
+                5 years
+            </label>
+        </div>
+        <div class="form-group">
+            <input class="form-check-input" type="radio" name="query_type" id="qtype2" value="funding_agency" >
+            <label class="form-check-label" for="qtype2">
+                Total number of funding agencies
+            </label>
+        </div>
+        <div class="form-group">
+          <input class="form-check-input" type="radio" name="query_type" id="qtype1" value="sanction_amount">
+          <label class="form-check-label" for="qtype1">
+              Total sanction amount
+          </label>            
+        </div>
+        <div class="form-group">
+          <input class="form-check-input" type="radio" name="query_type" id="qtype1" value="grant">
+          <label class="form-check-label" for="qtype1">
+              Total grant received
+          </label>            
+        </div>
+
+        <div class="form-group">
+            <input class="form-check-input" type="radio" name="query_type" value="sanction_order">
+            <label class="form-check-label" >
+                Sanction order
+            </label>
+            <div class="form-group level-2">
+                <input class="form-check-input" type="radio" name="order_type" id="qtype1" value="order_number" checked>
+                <label class="form-check-label" >
+                    Order Number
+                </label>
+                <input class="form-check-input" type="text" name="order_number" >
+                <input class="form-check-input" type="radio" name="order_type"  value="order_date" >
+                <label class="form-check-label" for="qtype1">
+                    Order Date
+                </label>
+                <input class="form-check-input" type="date" name="order_date" >            
+              </div>
+              <div class="form-group">
+                <input class="form-check-input" type="radio" name="query_type" id="qtype1" value="department" >
+                <label class="form-check-label" for="qtype1">
+                    By Department
+                </label>
+                <input class="form-check-input" type="text" name="department" id="qtype7" value="Department Name">
+              </div>            
+          </div>
+      <div class = "predict-button-holder">
+        <button type="submit" class="btn   btn-primary" id ="predict_answer">Search</button>
+      </div>
+      <div class="first-answer" style="display:none">
+        <div id="first_answer"></div>
+      </div>
+      <div class="predicted-answer" style="display:none">
+        <div id="processed_answer"></div>
+      </div>
+    
+    </form>
+    </div>
+      <div id="menu3" class="tab-pane fade">
+        <form  action="/adduser" method="post" >
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="name" name="name" class="form-control" id="email" placeholder="User's Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" name="email" class="form-control" id="email" placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" placeholder="Password for User">
+
+        </div>
+        <div class="form-group">
+          <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="Male" checked>
+          <label class="form-check-label" for="exampleRadios2">
+            Male
+          </label>
+        
+          <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
+          <label class="form-check-label" for="exampleRadios2">
+            Female
+          </label>
+        </div>
+        <div class="form-group">
+          <input class="form-check-input" type="radio" name="admin" id="admin1" value="true" checked>
+          <label class="form-check-label" for="admin1">
+            Admin
+          </label>
+        
+          <input class="form-check-input" type="radio" name="admin" id="admin2" value="false">
+          <label class="form-check-label" for="admin2">
+            Staff
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="ability_text">Describe your athletic ability</label>
+          <textarea name="ability" cols="100" rows="5" id ="ability_text" placeholder="Enter the Ability"></textarea>
+        </div>
+        <div class = "predict-button-holder">
+         <button type="submit" class="btn btn-primary" id ="add_user">Add</button>
+        </div>
+      </form>
+
+        <form>
+          <div class="form-group">
+            <label for="fileupload">Upload Excel File</label>
+            <input type="file" class="form-control-file" id="fileupload">
+            <button type="submit" class="btn btn-primary" id ="add_user">Add</button>
+          </div>
+        </form>
+      </div>
+      <div id="menu2" class="tab-pane fade">
+        <form  action="/addproject" method="post" >
+          <div class="form-group">
+              <label for="name">Project Title</label>
+              <input type="name" name="title" class="form-control"  placeholder="Title of the Project">
+          </div>
+        <div class="form-group">
+            <label for="name">Name of PI</label>
+            <input type="name" name="pi_name" class="form-control"  placeholder="Project Instructor's Name">
+        </div>
+        <div class="form-group">
+            <label for="name">Name of Co-PI</label>
+            <input type="name" name="co_pi_name" class="form-control"  placeholder="Co-Project Instructor's Name">
+        </div>
+        <div class="form-group">
+            <label for="name">Department of Co-PI</label>
+            <select class="form-control" name="co_pi_dept">
+              <option value="INSTITUTE">Institute</option>
+              <option value="chm">Chemstry</option>
+              <option value="ME">Mechanical</option>
+              <option value="EE">Elecctrical</option>
+              <option value="HSS">Humanities</option>
+              <option value="CSE">Computer Science</option>
+              <option value="PHY">Physics</option>
+              <option value="MATH">Maths</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Code</label>
+            <input type="name" name="code" class="form-control"  placeholder="Project Code">
+        </div>
+        <div class="form-group">
+            <label for="name">Department</label>
+            <select class="form-control" name="dept">
+              <option value="INSTITUTE">Institute</option>
+              <option value="chm">Chemstry</option>
+              <option value="ME">Mechanical</option>
+              <option value="EE">Elecctrical</option>
+              <option value="HSS">Humanities</option>
+              <option value="CSE">Computer Science</option>
+              <option value="PHY">Physics</option>
+              <option value="MATH">Maths</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Type of Scheme</label>
+            <input type="name" name="scheme" class="form-control"  placeholder="Project Type of Scheme">
+        </div>
+        <div class="form-group">
+            <label for="name">Project Code</label>
+            <input type="name" name="project_code" class="form-control"  placeholder="Project Code">
+        </div>
+        <div class="form-group">
+            <label for="name">Financial Year</label>
+            <input type="name" name="financial" class="form-control"  placeholder="Financial Year">
+        </div>
+        <div class="form-group">
+            <label for="name">Type</label>
+            <select class="form-control" name="type">
+              <option value="Sponsored">Sponsored</option>
+              <option value="Workshop">Workshop</option>
+              <option value="Internal">Internal</option>
+              <option value="Conference">Conference</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="name">Sponsoring Agency</label>
+            <input type="name" name="sponsoring_agency" class="form-control"  placeholder="Sponsoring Agency">
+        </div>
+        <div class="form-group">
+            <label for="name">Govt./ Pvt./Other</label>
+            <input type="name" name="govt_pvt" class="form-control"  placeholder="Govt. or Pvt. or Other">
+        </div>
+        <div class="form-group">
+            <label for="name">Whether Industry Funded</label>
+            <input class="form-check-input" type="radio" name="industry_funded"  value="YES" checked>
+            <label class="form-check-label" >
+              YES
+            </label>
+            <input class="form-check-input" type="radio" name="industry_funded"  value="NO">
+            <label class="form-check-label" >
+              NO
+            </label>
+        </div>
+                
+        <div class="form-group">
+            <label for="name">Status</label>
+            <select class="form-control" name="status">
+              <option value="completed">Completed</option>
+              <option value="ongoing">Ongoing</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id ="add_project">Add</button>
+        
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
+  </body>
+  <script src="lib/jquery.min.js"></script>
+  <script>
+    // You can also require other files to run in this process
+    //require('./renderer.js')
+    window.jQuery = window.$;
+
+
+  </script>
+
+  <script src="lib/bootstrap.min.js"></script>
+  <!-- <script src="js/helpbot.js"></script> -->
+</html>
