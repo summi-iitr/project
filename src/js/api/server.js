@@ -25,31 +25,6 @@ app.use(session({
     }
 }));
 
-// app.get('/synquery', function (req, res) {
-//   var connection = mysql.createConnection({
-//     host     : 'localhost',
-//     user     : 'root',
-//     password : 'admin',
-//     database: 'project'
-//   });
-//   connection.connect();
-//   connection.query('SELECT * FROM users', function (error, results, fields) {
-//     if (error) throw error;
-//     console.log('The solution is: ', JSON.stringify(results));
-//   });
-//   console.log("done")
-//   let callback =  (text) =>{
-//     console.log(text)
-//     res.setHeader('Content-Type', 'text/html');
-//     res.end(text);
-//   }
-
-//   let q_text = decodeURIComponent(req.query.q)
-//   console.log(q_text)
-//   callback("test")
-  // synonymn_query_processor(q_text, callback)
-//})
-
 
 // middleware function to check for logged-in users
 var sessionChecker = (req, res, next) => {
@@ -71,7 +46,10 @@ app.get('/', sessionChecker, (req, res) => {
 });
 
 app.post('/search', function (req, res) {
-  handleSearch(req,res)
+  handleSearch(req.body,res, (result)=>{
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(result));
+  })
 })
 
 app.post('/addproject', function (req, res) {
