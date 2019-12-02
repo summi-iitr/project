@@ -4,6 +4,8 @@ let mysql = require('mysql')
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+let handleSearch = require('./search_handler')
+let handleAddProject = require('./project_adder')
 let userChecker = (email, password) =>{
   return true
 }
@@ -67,6 +69,14 @@ var sessionChecker = (req, res, next) => {
 app.get('/', sessionChecker, (req, res) => {
   res.redirect('/login.html');
 });
+
+app.post('/search', function (req, res) {
+  handleSearch(req,res)
+})
+
+app.post('/addproject', function (req, res) {
+  handleAddProject(req,res)
+})
 
 app.post('/login', function (req, res) {
   if(userChecker(req.body.email, req.body.password)){
