@@ -56,7 +56,7 @@ module.exports = [
     },
     {
         displayName: "Project Code",
-        name: "code",
+        name: "project_code",
         type: "text",
         sqlType: "VARCHAR(255)"
 
