@@ -6,9 +6,7 @@ var cookieParser = require('cookie-parser');
 var session = require('express-session');
 let handleSearch = require('./search_handler')
 let handleAddProject = require('./project_adder')
-let userChecker = (email, password) =>{
-  return true
-}
+let userChecker = require('./check_user')
 
 // let query_processor = require('./query')
 // let synonymn_query_processor = require('./syn_query')
@@ -38,9 +36,14 @@ app.get('/synquery', function (req, res) {
   var connection = mysql.createConnection({
     host     : 'localhost',
     user     : 'root',
-    password : 'admin'
+    password : 'admin',
+    database: 'project'
   });
   connection.connect();
+  connection.query('SELECT * FROM users', function (error, results, fields) {
+    if (error) throw error;
+    console.log('The solution is: ', JSON.stringify(results));
+  });
   console.log("done")
   let callback =  (text) =>{
     console.log(text)
@@ -79,13 +82,16 @@ app.post('/addproject', function (req, res) {
 })
 
 app.post('/login', function (req, res) {
-  if(userChecker(req.body.email, req.body.password)){
-    req.session.user=req.body.email
-    res.redirect('/home.html');
-  }
-  else{
-    res.redirect('/login.html');
-  }
+  userChecker(req.body.email, req.body.password, (retVal, admin)=>{
+    if(retVal){
+      req.session.user=req.body.email
+      req.session.admin = admin
+      res.redirect('/home.html');
+    }
+    else{
+      res.redirect('/login.html');
+    }
+  })
   //   // let add_text= JSON.parse(req.body)
   //   // let callback =  (text) =>{
   //   //   res.setHeader('Content-Type', 'application/json');
