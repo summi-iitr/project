@@ -11,5 +11,14 @@ module.exports = [
         type: "text",
         sqlType: "VARCHAR(255)"
 
-    }       
+    },
+    {
+        displayName: "Code",
+        name: "code",
+        type: "text",
+        sqlType: "VARCHAR(255)"
+
+    }
+
 ]
+
