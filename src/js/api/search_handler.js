@@ -16,9 +16,13 @@ module.exports = (body, arg2, callback)=>{
         queryString = `SELECT * FROM project_users WHERE Dept='${arg1}'`
     }
     else if (code == 'sanction_order'){
-        if(body.santion_date_type = "six_months"){
+        if(body.santion_date_type == "six_months"){
             queryString =  `SELECT * FROM project_users WHERE (date_sanction > DATE_SUB(now(), INTERVAL 5 YEAR)  )`
         }
+        if(body.santion_date_type == "date_range"){
+            queryString =  `SELECT * FROM project_users WHERE (date_sanction >= '${body.date_sanction_start}' AND date_sanction <= '${body.date_sanction_end}'  )`
+        }
+        
 
 
     }
