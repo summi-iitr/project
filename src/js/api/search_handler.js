@@ -15,6 +15,13 @@ module.exports = (body, arg2, callback)=>{
         let arg1 = body.department 
         queryString = `SELECT * FROM project_users WHERE Dept='${arg1}'`
     }
+    else if (code == 'sanction_order'){
+        if(body.santion_date_type = "six_months"){
+            queryString =  `SELECT * FROM project_users WHERE (date_sanction >= DATEADD(year, -5, GetDate())  )`
+        }
+        
+
+    }
     console.log(queryString)
     connection.query(queryString, function (error, results, fields) {
         if (error){

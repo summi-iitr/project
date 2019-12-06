@@ -70,20 +70,21 @@
 
         <div class="form-group">
             <input class="form-check-input" type="radio" name="query_type" value="sanction_order">
-            <label class="form-check-label" >
-                Sanction order
-            </label>
+            <label for="name">Date of Sanction</label>
+            
             <div class="form-group level-2">
-                <input class="form-check-input" type="radio" name="order_type" id="qtype1" value="order_number" checked>
-                <label class="form-check-label" >
-                    Order Number
-                </label>
-                <input class="form-check-input" type="text" name="order_number" >
-                <input class="form-check-input" type="radio" name="order_type"  value="order_date" >
-                <label class="form-check-label" for="qtype1">
-                    Order Date
-                </label>
-                <input class="form-check-input" type="date" name="order_date" >            
+
+                            
+            <input class="form-check-input" type="radio" name="santion_date_type" value="six_months" checked>
+              <label for="name">Past five years</label>
+              <input class="form-check-input" type="radio" name="santion_date_type" value="date_range">
+              <label for="name">Date Range</label>
+              
+              <label class="form-check-label" for="qtype1">From</label> 
+              <input type="date" name="date_sanction_start" class="form-control"  placeholder="Sanction Date">
+              <label class="form-check-label" for="qtype1">To</label> 
+              <input type="date" name="date_sanction_end" class="form-control"  placeholder="Sanction Date">
+           
               </div>
               <div class="form-group">
                 <input class="form-check-input" type="radio" name="query_type" id="qtype1" value="department" >
