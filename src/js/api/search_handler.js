@@ -17,9 +17,9 @@ module.exports = (body, arg2, callback)=>{
     }
     else if (code == 'sanction_order'){
         if(body.santion_date_type = "six_months"){
-            queryString =  `SELECT * FROM project_users WHERE (date_sanction >= DATEADD(year, -5, GetDate())  )`
+            queryString =  `SELECT * FROM project_users WHERE (date_sanction > DATE_SUB(now(), INTERVAL 5 YEAR)  )`
         }
-        
+
 
     }
     console.log(queryString)
