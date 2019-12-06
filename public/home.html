@@ -36,6 +36,7 @@
     <li class="admin-ui"><a data-toggle="tab" href="#menu2">Add Project Details</a></li>
     <li class="admin-ui"><a data-toggle="tab" href="#menu3">Add User</a></li>
     <li class="admin-ui"><a data-toggle="tab" href="#menu4">Upload Data</a></li>
+    <li class="admin-ui"><a data-toggle="tab" href="#menu5">Users</a></li>
   </ul>
   <div class="tab-content">
 <!-- Home Tab. content -->
@@ -119,17 +120,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>1</td><td>Total Number of Projects <span id="total_num_projects"></span></td>
+            <tr><td>1</td><td>Total Number of Projects =  <span id="total_num_projects"></span></td>
               <td id="total_govt_sponsored"></td><td id="total_nongovt_sponsored"></td><td id="total_internal_sponsored"></td>
               <td id="total_govt_consultancy"></td><td id="total_nongovt_consultancy"></td><td id="total_internal_consultancy"></td>
               <td id="total_govt_other"></td><td id="total_nongovt_other"></td><td id="total_internal_other"></td>
             </tr>
-            <tr><td>2</td><td>Total Number of Projects Completed<span id="completed_num_projects"></span></td>
+            <tr><td>2</td><td>Total Number of Projects Completed = <span id="completed_num_projects"></span></td>
               <td id="completed_govt_sponsored"></td><td id="completed_nongovt_sponsored"></td><td id="completed_internal_sponsored"></td>
               <td id="completed_govt_consultancy"></td><td id="completed_nongovt_consultancy"></td><td id="completed_internal_consultancy"></td>
               <td id="completed_govt_other"></td><td id="completed_nongovt_other"></td><td id="completed_internal_other"></td>
             </tr>
-            <tr><td>3</td><td>Total Number of Projects Running<span id="running_num_projects"></span></td>
+            <tr><td>3</td><td>Total Number of Projects Running = <span id="running_num_projects"></span></td>
               <td id="running_govt_sponsored"></td><td id="running_nongovt_sponsored"></td><td id="running_internal_sponsored"></td>
               <td id="running_govt_consultancy"></td><td id="running_nongovt_consultancy"></td><td id="running_internal_consultancy"></td>
               <td id="running_govt_other"></td><td id="running_nongovt_other"></td><td id="running_internal_other"></td>
@@ -329,6 +330,18 @@
               <button type="submit" class="btn btn-primary" id ="add_user">Add</button>
             </div>
           </form>
+      </div>
+      <div id="menu5" class="tab-pane fade">
+          <table>
+              <thead>
+                  <tr >
+                  <th>Name</th><th>Email</th><th>Role</th><th>Action</th>
+                  </tr>
+              </thead>
+              <tbody id="user_table">
+
+              </tbody>
+          </table>
       </div>
     </div>
     </div>

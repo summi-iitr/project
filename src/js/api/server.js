@@ -4,8 +4,10 @@ let mysql = require('mysql')
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
+
 let handleSearch = require('./search_handler')
 let handleNumSearch = require('./num_search_handler')
+let allUserInfoHandler = require('./users_handler')
 
 let handleAddUser = require('./add_user')
 let handleAddProject = require('./project_adder')
@@ -50,6 +52,14 @@ app.post('/upload/excel', function (req, res) {
       res.end()
     })
   
+})
+
+app.get('/allusers', (req, res) => {
+  
+  allUserInfoHandler( (result) =>{  
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(result));
+  })
 })
 
 app.get('/numberquery', (req, res) => {
