@@ -1,9 +1,14 @@
  var cells = [
-     {
+    {
          id:"total_govt_sponsored",
          query:`type='Sponsored' AND govt_pvt='GOVT.'`
 
+    },
+    {
+        id:"total_govt_sponsored",
+        query:`type='Sponsored' AND govt_pvt='GOVT.'`   
     }
+
  ]
  let populateNumberTable = (searchQuery)=>{
     console.log("searchQuery= ", + searchQuery)
