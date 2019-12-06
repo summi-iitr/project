@@ -15,14 +15,17 @@ module.exports = (body, arg2, callback)=>{
         let arg1 = body.department 
         queryString = `SELECT * FROM project_users WHERE Dept='${arg1}'`
     }
+    console.log(queryString)
     connection.query(queryString, function (error, results, fields) {
         if (error){
             throw error
         }
         else{
-            callback(results)
+
+            callback({results, queryString})
             //console.log('Project_users table creted successfully');
         } 
         
     })
+    connection.end()
 }

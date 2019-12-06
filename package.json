@@ -30,7 +30,8 @@
     "mysql": "2.17.1",
     "xlsx": "",
     "formidable": "",
-    "lodash": ""
+    "lodash": "",
+    "fs": ""
   },
   "devDependencies": {},
   "build": {

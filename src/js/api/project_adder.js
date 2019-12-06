@@ -39,4 +39,5 @@ module.exports = (reqBody, callback) =>{
             
         }
     })
+    connection.end()
 }

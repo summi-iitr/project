@@ -25,5 +25,6 @@ let fn = ()=>{
         } 
         
     })
+    connection.end()
 }
 fn()

@@ -1,5 +1,7 @@
+let mysql = require('mysql')
 
-module.exports = (code, arg1, arg2)=>{
+module.exports = (query, callback)=>{
+    
     var connection = mysql.createConnection({
         host     : 'localhost',
         user     : 'root',
@@ -7,16 +9,12 @@ module.exports = (code, arg1, arg2)=>{
         database: 'project'
     });
     connection.connect();
-    let queryString
-    if(code == 1){ 
-        queryString = `SELECT * FROM users WHERE Dept='${arg1}'`
-    }
-    connection.query(queryString, function (error, results, fields) {
+    console.log(query)
+    connection.query(query, function (error, results, fields) {
         if (error){
             throw error
         }
         else{
-
             callback(results)
             //console.log('Project_users table creted successfully');
         } 

@@ -1,19 +1,23 @@
 const xlsx  = require('xlsx')
 let _ = require('lodash')
 let projectAdder = require('./project_adder')
+let fs = require("fs")
 let addSheet = (sheet) =>{
-    sheet.array.forEach(element => {
-        projectAdder(element, ()=>{
-            console.log("added row" , JSON.stringify(element))
-        })
-    });
+    console.log("length =" + sheet)
+    // _.each(sheet, row => {
+    //     //projectAdder(element, ()=>{
+    //         console.log("added row" , JSON.stringify(row))
+    //     //})
+    // });
 }
 module.exports = (data, callback)=>{
     console.log(JSON.stringify(data))
-    let readFile = xlsx.read(data.path)
-    _.map(readFile.Sheets, sheet =>{
-        let sheetJson = xlsx.utils.sheet_to_json(readFile.Sheets[0])
-        console.log(sheetJson)
+    fs.rename(data.path, data.path+".xlsx", function (err) {
+        let readFile = xlsx.read(data.path+".xlsx")
+        _.map(readFile.Sheets, sheet =>{
+            let sheetJson = xlsx.utils.sheet_to_html(sheet)
+            addSheet(sheetJson)
+        })
     })
    
 }

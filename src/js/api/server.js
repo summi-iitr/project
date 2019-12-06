@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 let handleSearch = require('./search_handler')
+let handleNumSearch = require('./num_search_handler')
+
 let handleAddUser = require('./add_user')
 let handleAddProject = require('./project_adder')
 let userChecker = require('./check_user')
@@ -50,6 +52,14 @@ app.post('/upload/excel', function (req, res) {
   
 })
 
+app.get('/numberquery', (req, res) => {
+  console.log("q ="+ req.query.q)
+handleNumSearch(req.query.q, (result) =>{  
+    
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(result));
+  })
+})
 // route for Home-Page
 app.get('/', sessionChecker, (req, res) => {
   res.redirect('/login.html');
