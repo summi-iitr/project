@@ -1,5 +1,5 @@
 const xlsx  = require('xlsx')
-let $ = require('jquery')
+let _ = require('lodash')
 let projectAdder = require('./project_adder')
 let addSheet = (sheet) =>{
     sheet.array.forEach(element => {
@@ -10,9 +10,10 @@ let addSheet = (sheet) =>{
 }
 module.exports = (data, callback)=>{
     console.log(JSON.stringify(data))
-    // let readFile = xlsx.read(data)
-    // $.each(readFile.Sheets, (idx, sheet) =>{
-    //     let sheetJson = xlsx.utils.sheet_to_json(sheet)
-    //     addSheet(sheetJson)
-    // })
+    let readFile = xlsx.read(data.path)
+    _.map(readFile.Sheets, sheet =>{
+        let sheetJson = xlsx.utils.sheet_to_json(readFile.Sheets[0])
+        console.log(sheetJson)
+    })
+   
 }

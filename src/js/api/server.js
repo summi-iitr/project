@@ -9,6 +9,7 @@ let handleAddUser = require('./add_user')
 let handleAddProject = require('./project_adder')
 let userChecker = require('./check_user')
 let excelHandler = require('./parse')
+const formidable = require('formidable')
 
 app.use(express.static('public'))
 // initialize cookie-parser to allow us access the cookies stored in the browser. 
@@ -35,9 +36,18 @@ var sessionChecker = (req, res, next) => {
   }    
 };
 app.post('/upload/excel', function (req, res) {
-  excelHandler(req.body,()=>{
+  new formidable.IncomingForm().parse(req)
+    .on('file', (name, file) => {
+      excelHandler(file,()=>{
     
-  })
+      })
+ //     console.log('Uploaded file', name, file)
+    })
+    
+    .on('end', () => {
+      res.end()
+    })
+  
 })
 
 // route for Home-Page

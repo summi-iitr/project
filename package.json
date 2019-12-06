@@ -28,7 +28,9 @@
     "multer": "",
     "solr": "",
     "mysql": "2.17.1",
-    "xlsx": ""
+    "xlsx": "",
+    "formidable": "",
+    "lodash": ""
   },
   "devDependencies": {},
   "build": {
